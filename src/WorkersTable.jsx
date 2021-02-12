@@ -6,20 +6,12 @@ import { setData } from "./store/workersList/actions";
 
 const columns = [
    { field: 'personnelNumber', headerName: 'Табельный №', width: 170 },
-   { field: 'firstName', headerName: 'Имя', width: 130 },
    { field: 'lastName', headerName: 'Фамилия', width: 130 },
+   { field: 'firstName', headerName: 'Имя', width: 130 },
    { field: 'middleName', headerName: 'Отчество', width: 130 },
    { field: 'birthdayDate', headerName: 'Дата рождения', type: 'date', width: 210, },
    { field: 'subDivision', headerName: 'Подразделение', width: 250 },
    { field: 'position', headerName: 'Должность', width: 150 },
-   {
-      field: 'age',
-      headerName: 'Возраст',
-      type: 'number',
-      width: 100,
-      valueGetter: (params) =>
-         `${Date.now()}`
-   },
    { field: 'employmentDate', headerName: 'Дата приема на работу', type: 'date', width: 210, },
 ];
 
@@ -40,7 +32,7 @@ function WorkersTable() {
    const data = useSelector(state => state.workersListVault.workersList)
    return (
       <div className="container">
-         <input className="workers-table__search" type="text" placeholder="Начните вводить имя сотрудника" />
+         <input className="workers-table__search" type="text" placeholder="Поиск сотрудников" />
          {data ? (<table className="workers-table">
             <caption className="workers-table__description">Список сотрудников ООО "ПМХ-ВТОРМЕТ"</caption>
             <thead>
@@ -63,10 +55,10 @@ function WorkersTable() {
                   birthdayDate, personnelNumber,
                   division, employmentDate }) => {
                   return (
-                     <tr key={`${id}+${firstName}`}><td>{personnelNumber}</td><td>{firstName}</td>
-                        <td>{lastName}</td><td>{middleName}</td>
+                     <tr key={`${id}+${firstName}`}><td>{personnelNumber}</td><td>{lastName}</td>
+                        <td>{firstName}</td><td>{middleName}</td>
                         <td>{birthdayDate}</td><td>{division.subDivision}</td>
-                        <td>{division.position}</td><td>{((new Date().getTime() - new Date(birthdayDate)) / (24 * 3600 * 365.25 * 1000)) | 0}</td>
+                        <td>{division.position}</td>
                         <td>{employmentDate}</td></tr>
                   )
                })}
