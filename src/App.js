@@ -1,11 +1,11 @@
 import React from "react";
-import WorkersTable from "./WorkersTable";
+import ListWorkers from "./pages/ListWorkers";
 
 function App() {
 
   return (
     <div className="App">
-      <WorkersTable />
+      <ListWorkers />
     </div>
   );
 }
