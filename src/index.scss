@@ -92,7 +92,8 @@ code {
 
   &__column-title {
     text-align: center;
-    padding: 5px 0px 5px 0px;
+    padding: 5px;
+    word-break: break-all;
 
     border-collapse: collapse;
     border: 3px solid rgb(35, 44, 0);
@@ -123,6 +124,9 @@ code {
     &:nth-child(9) {
       width: 5%;
     }
+  }
+  @media (max-width: 1200px) {
+    font-size: 12px;
   }
 }
 tr {
