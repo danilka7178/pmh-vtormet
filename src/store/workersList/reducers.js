@@ -4,7 +4,8 @@ import {
    SET_LAST_NAME, SET_FIRST_NAME,
    SET_MIDDLE_NAME, SET_BIRTHDAY_DATE,
    SET_DIVISION_POSITION, SET_DIVISION_SUBDIVISION,
-   SET_EMPLOYMENT_DATE, RESET_FORM
+   SET_EMPLOYMENT_DATE, RESET_FORM,
+   NEW_WORKER_TO_STORE
 } from "./actions";
 
 const initialState = {
@@ -39,72 +40,88 @@ export const workersListReducer = (state = initialState, action) => {
       case SET_PERSONNEL_NUMBER:
          return ({
             ...state,
-            workerInfo: {
-               ...state.workerInfo,
+            newWorkerInfo: {
+               ...state.newWorkerInfo,
                personnelNumber: action.payload,
             }
          })
       case SET_LAST_NAME:
          return ({
             ...state,
-            workerInfo: {
-               ...state.workerInfo,
+            newWorkerInfo: {
+               ...state.newWorkerInfo,
                lastName: action.payload,
             }
          })
       case SET_FIRST_NAME:
          return ({
             ...state,
-            workerInfo: {
-               ...state.workerInfo,
+            newWorkerInfo: {
+               ...state.newWorkerInfo,
                firstName: action.payload,
             }
          })
       case SET_MIDDLE_NAME:
          return ({
             ...state,
-            workerInfo: {
-               ...state.workerInfo,
+            newWorkerInfo: {
+               ...state.newWorkerInfo,
                middleName: action.payload,
             }
          })
       case SET_BIRTHDAY_DATE:
          return ({
             ...state,
-            workerInfo: {
-               ...state.workerInfo,
+            newWorkerInfo: {
+               ...state.newWorkerInfo,
                birthdayDate: action.payload,
             }
          })
       case SET_DIVISION_POSITION:
          return ({
             ...state,
-            workerInfo: {
-               ...state.workerInfo,
-               divisionPosition: action.payload,
+            newWorkerInfo: {
+               ...state.newWorkerInfo,
+               division: {
+                  ...state.newWorkerInfo.division,
+                  position: action.payload,
+               }
             }
          })
       case SET_DIVISION_SUBDIVISION:
          return ({
             ...state,
-            workerInfo: {
-               ...state.workerInfo,
-               divisionSubDivision: action.payload,
+            newWorkerInfo: {
+               ...state.newWorkerInfo,
+               division: {
+                  ...state.newWorkerInfo.division,
+                  subDivision: action.payload,
+               }
             }
          })
       case SET_EMPLOYMENT_DATE:
          return ({
             ...state,
-            workerInfo: {
-               ...state.workerInfo,
+            newWorkerInfo: {
+               ...state.newWorkerInfo,
                employmentDate: action.payload,
             }
          })
       case RESET_FORM:
          return ({
             ...state,
-            workerInfo: {}
+            newWorkerInfo: {}
+         })
+      case NEW_WORKER_TO_STORE:
+         return ({
+            ...state,
+            workersList: [
+               ...state.workersList,
+               action.payload
+            ],
+            newWorkerInfo: {},
          })
       default: return state
    }
+
 }

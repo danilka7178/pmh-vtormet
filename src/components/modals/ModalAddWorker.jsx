@@ -7,18 +7,23 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
+import moment from "moment";
+import 'moment/locale/ru'
+
 import { useSelector, useDispatch } from "react-redux";
 import {
    closeModal, setPersonnelNumber,
    setLastName, setFirstName,
    setMiddleName, setBirthdayDate,
    setDivisionPosition, setDivisionSubDivision,
-   setEmploymentDate, resetFormAddWorker
+   setEmploymentDate, resetFormAddWorker,
+   putNewWorkerToStore, postNewWorkerToServer
 } from "../../store/workersList/actions";
 
 const ModalAddWorker = () => {
-
+   moment.locale("ru");
    const visibleModalAddWorker = useSelector(state => state.workersListVault.visibleModal.visibleModalAddWorker);
+   const newWorkerInfo = useSelector(state => state.workersListVault.newWorkerInfo);
    const dispatch = useDispatch();
 
    const handleClose = () => {
@@ -37,19 +42,41 @@ const ModalAddWorker = () => {
          case "middleName":
             return dispatch(setMiddleName(e.target.value));
          case "birthdayDate":
-            return dispatch(setBirthdayDate(e.target.value));
+            return dispatch(setBirthdayDate(moment(e.target.value).format('L')));
          case "divisionPosition":
             return dispatch(setDivisionPosition(e.target.value));
          case "divisionSubDivision":
             return dispatch(setDivisionSubDivision(e.target.value));
          case "employmentDate":
-            return dispatch(setEmploymentDate(e.target.value));
+            return dispatch(setEmploymentDate(moment(e.target.value).format('L')));
 
          default:
             break;
       }
    }
 
+   const handleAdd = () => {
+      dispatch(putNewWorkerToStore(newWorkerInfo));
+      dispatch(postNewWorkerToServer(newWorkerInfo));
+      // dispatch(resetFormAddWorker());
+      dispatch(closeModal("visibleModalAddWorker"));
+   }
+
+   const disabledButtonAddWorker = () => {
+      if (
+         newWorkerInfo &&
+         newWorkerInfo.personnelNumber &&
+         newWorkerInfo.lastName &&
+         newWorkerInfo.firstName &&
+         newWorkerInfo.middleName &&
+         newWorkerInfo.birthdayDate &&
+         newWorkerInfo.division &&
+         newWorkerInfo.division.position &&
+         newWorkerInfo.division.subDivision &&
+         newWorkerInfo.employmentDate) {
+         return true
+      }
+   }
 
    return (
       <div>
@@ -131,7 +158,12 @@ const ModalAddWorker = () => {
                <Button onClick={handleClose} variant="outlined" color="primary">
                   Отмена
                </Button>
-               <Button onClick={handleClose} variant="contained" color="secondary">
+               <Button
+                  onClick={handleAdd}
+                  variant="contained"
+                  color="secondary"
+                  disabled={!disabledButtonAddWorker()}
+               >
                   Добавить
                </Button>
             </DialogActions>

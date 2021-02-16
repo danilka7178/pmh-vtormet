@@ -1,8 +1,6 @@
 import React from 'react';
-import axios from "axios";
-
 import { useSelector, useDispatch } from "react-redux";
-import { setData } from "../store/workersList/actions";
+import { getWorkersFromServer, deleteWorkerFromServer } from "../store/workersList/actions";
 
 const columns = [
    { field: 'personnelNumber', headerName: 'Табельный №', width: 170 },
@@ -19,22 +17,29 @@ const columns = [
 
 function WorkersTable() {
    const dispatch = useDispatch();
-
-   const getData = async () => {
-      const { data } = await axios.get("https://6024f2ad36244d001797b2c7.mockapi.io/Workers");
-      dispatch(setData(data));
-   }
-
    React.useEffect(() => {
-      getData();
+      dispatch(getWorkersFromServer());
       // eslint-disable-next-line
    }, []);
 
    const data = useSelector(state => state.workersListVault.workersList);
 
    const clickRemoveWorker = (e) => {
-      console.log(`Клик по ремуву id: ${e.target.id}`)
+      const workerToDelete = data.find((obj) => {
+         return (
+            obj.id === e.target.id
+         )
+      });
+
+      const requestDeleteWorker = window.confirm(`Вы действительно хотите удалить следующего работника: 
+      ${workerToDelete.lastName} ${workerToDelete.firstName} ${workerToDelete.middleName}
+      ${workerToDelete.division.position}?`)
+
+      if (requestDeleteWorker) {
+         dispatch(deleteWorkerFromServer(e.target.id));
+      }
    }
+
    const clickChangeWorker = (e) => {
       console.log(`Клик по изменению id: ${e.target.id}`)
    }
@@ -57,7 +62,7 @@ function WorkersTable() {
                </tr>
             </thead>
             <tbody>
-               {data.map(({ id, firstName,
+               {data.map(({ id = data.length + 1, firstName,
                   lastName, middleName,
                   birthdayDate, personnelNumber,
                   division, employmentDate }) => {
