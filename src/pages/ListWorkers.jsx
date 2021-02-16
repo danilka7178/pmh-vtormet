@@ -3,7 +3,9 @@ import WorkersTable from "../components/WorkersTable";
 import axios from "axios";
 
 import { useSelector, useDispatch } from "react-redux";
-import { setData } from "../store/workersList/actions"
+import { setData, openModal } from "../store/workersList/actions";
+
+import ModalAddWorker from "../components/modals/ModalAddWorker"
 
 function ListWorkers() {
 
@@ -12,7 +14,6 @@ function ListWorkers() {
    const dispatch = useDispatch();
 
    const findWorker = (e) => {
-      console.log(e, e.code)
       if (inputSearchWorkerValue === "" && (e.type === "click" || e.code === "Enter" || e.code === "Backspace")) {
          const getData = async () => {
             const { data } = await axios.get("https://6024f2ad36244d001797b2c7.mockapi.io/Workers");
@@ -44,12 +45,21 @@ function ListWorkers() {
       }
    }
 
+   const openModalAddWorker = () => {
+      dispatch(openModal("visibleModalAddWorker"));
+   }
+
    return (
       <div className="container">
          <div className="list-workers">
             <div className="list-workers__description">Список сотрудников ООО "ПМХ-ВТОРМЕТ"</div>
             <div className="list-workers__side">
-               <button className="list-workers__btn">Добавить сотрудника</button>
+               <button
+                  className="list-workers__btn"
+                  onClick={openModalAddWorker}
+               >
+                  Добавить сотрудника
+               </button>
                <div>
                   <input
                      className="list-workers__search"
@@ -73,6 +83,7 @@ function ListWorkers() {
                {data ? data.length : 0}
             </div>
          </div>
+         <ModalAddWorker />
       </div>
    );
 }
