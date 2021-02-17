@@ -1,6 +1,10 @@
 import React from 'react';
 import { useSelector, useDispatch } from "react-redux";
-import { getWorkersFromServer, deleteWorkerFromServer } from "../store/workersList/actions";
+import {
+   getWorkersFromServer,
+   deleteWorkerFromServer,
+   deleteWorkerFromStore
+} from "../store/workersList/actions";
 
 const columns = [
    { field: 'personnelNumber', headerName: 'Табельный №', width: 170 },
@@ -24,25 +28,19 @@ function WorkersTable() {
 
    const data = useSelector(state => state.workersListVault.workersList);
 
-   const clickRemoveWorker = (e) => {
-      const workerToDelete = data.find((obj) => {
-         return (
-            obj.id === e.target.id
-         )
-      });
-
-      const requestDeleteWorker = window.confirm(`Вы действительно хотите удалить следующего работника: 
-      ${workerToDelete.lastName} ${workerToDelete.firstName} ${workerToDelete.middleName}
-      ${workerToDelete.division.position}?`)
-
+   const clickRemoveWorker = async (e) => {
+      dispatch(deleteWorkerFromStore(e.target.id))
+      const requestDeleteWorker = await window.confirm(`Вы действительно хотите удалить работника?`)
       if (requestDeleteWorker) {
-         dispatch(deleteWorkerFromServer(e.target.id));
+         dispatch(deleteWorkerFromServer(e.target.id))
       }
    }
 
    const clickChangeWorker = (e) => {
       console.log(`Клик по изменению id: ${e.target.id}`)
    }
+
+   console.log(data)
 
    return (
       <div className="table-workers">
@@ -62,12 +60,12 @@ function WorkersTable() {
                </tr>
             </thead>
             <tbody>
-               {data.map(({ id = data.length + 1, firstName,
+               {data.map(({ id = data.length, firstName,
                   lastName, middleName,
                   birthdayDate, personnelNumber,
                   division, employmentDate }) => {
                   return (
-                     <tr key={`${id}+${firstName}`}><td>{personnelNumber}</td><td>{lastName}</td>
+                     <tr key={`${id} + ${firstName}`}><td>{personnelNumber}</td><td>{lastName}</td>
                         <td>{firstName}</td><td>{middleName}</td>
                         <td>{birthdayDate}</td><td>{division.subDivision}</td>
                         <td>{division.position}</td>

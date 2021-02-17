@@ -5,7 +5,7 @@ import {
    SET_MIDDLE_NAME, SET_BIRTHDAY_DATE,
    SET_DIVISION_POSITION, SET_DIVISION_SUBDIVISION,
    SET_EMPLOYMENT_DATE, RESET_FORM,
-   NEW_WORKER_TO_STORE
+   NEW_WORKER_TO_STORE, DELETE_WORKER_FROM_STORE
 } from "./actions";
 
 const initialState = {
@@ -119,6 +119,12 @@ export const workersListReducer = (state = initialState, action) => {
                ...state.workersList,
                action.payload
             ],
+            newWorkerInfo: {},
+         })
+      case DELETE_WORKER_FROM_STORE:
+         return ({
+            ...state,
+            workersList: state.workersList.filter((obj) => obj.id !== action.payload),
             newWorkerInfo: {},
          })
       default: return state

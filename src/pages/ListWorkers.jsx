@@ -79,8 +79,8 @@ function ListWorkers() {
             </div>
             <WorkersTable />
             <div className="list-workers__summary-info">
-               {inputSearchWorkerValue === "" ? "Общее кол-во работников: " : "Найдены следующие работники: "}
-               {data ? data.length : 0}
+               {inputSearchWorkerValue === "" ? "Общее кол-во работников: " : "Количество совпадений: "}
+               {data ? data.length : "0"}
             </div>
          </div>
          <ModalAddWorker />
