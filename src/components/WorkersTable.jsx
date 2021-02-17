@@ -28,19 +28,19 @@ function WorkersTable() {
 
    const data = useSelector(state => state.workersListVault.workersList);
 
-   const clickRemoveWorker = async (e) => {
+   const clickRemoveWorker = (e) => {
+      console.log(e.target.id, data)
       dispatch(deleteWorkerFromStore(e.target.id))
-      const requestDeleteWorker = await window.confirm(`Вы действительно хотите удалить работника?`)
-      if (requestDeleteWorker) {
-         dispatch(deleteWorkerFromServer(e.target.id))
-      }
+      // const requestDeleteWorker = window.confirm(`Вы действительно хотите удалить работника?`)
+      // if (requestDeleteWorker) {
+      //    dispatch(deleteWorkerFromServer(e.target.id))
+      // }
    }
 
    const clickChangeWorker = (e) => {
       console.log(`Клик по изменению id: ${e.target.id}`)
    }
 
-   console.log(data)
 
    return (
       <div className="table-workers">

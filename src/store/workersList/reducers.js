@@ -43,6 +43,7 @@ export const workersListReducer = (state = initialState, action) => {
             newWorkerInfo: {
                ...state.newWorkerInfo,
                personnelNumber: action.payload,
+               id: +state.workersList[state.workersList.length - 1].id + 1
             }
          })
       case SET_LAST_NAME:

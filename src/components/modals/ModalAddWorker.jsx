@@ -12,7 +12,7 @@ import {
    setMiddleName, setBirthdayDate,
    setDivisionPosition, setDivisionSubDivision,
    setEmploymentDate, resetFormAddWorker,
-   putNewWorkerToStore, postNewWorkerToServer
+   putNewWorkerToStore, postNewWorkerToServer,
 } from "../../store/workersList/actions";
 
 const ModalAddWorker = () => {
