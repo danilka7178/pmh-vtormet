@@ -31,10 +31,10 @@ function WorkersTable() {
    const clickRemoveWorker = (e) => {
       console.log(e.target.id, data)
       dispatch(deleteWorkerFromStore(e.target.id))
-      // const requestDeleteWorker = window.confirm(`Вы действительно хотите удалить работника?`)
-      // if (requestDeleteWorker) {
-      //    dispatch(deleteWorkerFromServer(e.target.id))
-      // }
+      const requestDeleteWorker = window.confirm(`Вы действительно хотите удалить работника?`)
+      if (requestDeleteWorker) {
+         dispatch(deleteWorkerFromServer(e.target.id))
+      }
    }
 
    const clickChangeWorker = (e) => {
