@@ -125,7 +125,7 @@ export const workersListReducer = (state = initialState, action) => {
       case DELETE_WORKER_FROM_STORE:
          return ({
             ...state,
-            workersList: state.workersList.filter((obj) => obj.id !== action.payload),
+            workersList: state.workersList.filter((obj) => +obj.id !== +action.payload),
             newWorkerInfo: {},
          })
       default: return state
