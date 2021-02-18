@@ -22,7 +22,7 @@ const ModalAddWorker = () => {
 
    const handleClose = () => {
       dispatch(resetFormAddWorker());
-      dispatch(closeModal("visibleModalAddWorker"))
+      dispatch(closeModal("visibleModalEditWorker"))
    }
 
    const changeInputValue = (e) => {
@@ -52,7 +52,7 @@ const ModalAddWorker = () => {
    const handleAdd = () => {
       dispatch(putNewWorkerToStore(newWorkerInfo));
       dispatch(postNewWorkerToServer(newWorkerInfo));
-      dispatch(closeModal("visibleModalAddWorker"));
+      dispatch(closeModal("visibleModalEditWorker"));
    }
 
    const disabledButtonAddWorker = () => {
@@ -70,9 +70,9 @@ const ModalAddWorker = () => {
 
    return (
       <FormListWorker
-         titleForm={"Добавить "}
-         contentText={"добавления "}
-         contentButton={"Добавить"}
+         titleForm={"Изменение "}
+         contentText={"редактирования "}
+         contentButton={"Изменить"}
          disabledButtonAddWorker={disabledButtonAddWorker}
          handleAdd={handleAdd}
          changeInputValue={changeInputValue}

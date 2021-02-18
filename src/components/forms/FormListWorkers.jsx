@@ -10,7 +10,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import { useSelector } from "react-redux";
 
 const FormListWorker = ({ disabledButtonAddWorker, handleAdd,
-   changeInputValue, handleClose }) => {
+   changeInputValue, handleClose, titleForm, contentText, contentButton }) => {
 
 
    const visibleModalAddWorker = useSelector(state => state.workersListVault.visibleModal.visibleModalAddWorker);
@@ -22,11 +22,11 @@ const FormListWorker = ({ disabledButtonAddWorker, handleAdd,
             aria-labelledby="form-dialog-title"
          >
             <DialogTitle id="form-dialog-title">
-               Добавить сотрудника
+               {titleForm} сотрудника
             </DialogTitle>
             <DialogContent>
                <DialogContentText>
-                  Для добавления сотрудника, необходимо заполнить все поля ниже
+                  Для {contentText} сотрудника, необходимо заполнить все поля ниже
                </DialogContentText>
                <TextField
                   autoFocus
@@ -106,7 +106,7 @@ const FormListWorker = ({ disabledButtonAddWorker, handleAdd,
                   color="secondary"
                   disabled={!disabledButtonAddWorker()}
                >
-                  Добавить
+                  {contentButton}
                </Button>
             </DialogActions>
          </Dialog>

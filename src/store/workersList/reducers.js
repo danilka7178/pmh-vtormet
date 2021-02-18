@@ -11,6 +11,7 @@ import {
 const initialState = {
    visibleModal: {
       visibleModalAddWorker: false,
+      visibleModalEditWorker: false,
    }
 };
 

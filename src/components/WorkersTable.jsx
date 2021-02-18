@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import {
    getWorkersFromServer,
    deleteWorkerFromServer,
-   deleteWorkerFromStore
+   deleteWorkerFromStore,
+   openModal
 } from "../store/workersList/actions";
 
 const columns = [
@@ -39,6 +40,7 @@ function WorkersTable() {
 
    const clickChangeWorker = (e) => {
       console.log(`Клик по изменению id: ${e.target.id}`)
+      dispatch(openModal("visibleModalEditWorker"))
    }
 
 
