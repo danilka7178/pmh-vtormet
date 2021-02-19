@@ -5,13 +5,17 @@ import {
    SET_MIDDLE_NAME, SET_BIRTHDAY_DATE,
    SET_DIVISION_POSITION, SET_DIVISION_SUBDIVISION,
    SET_EMPLOYMENT_DATE, RESET_FORM,
-   NEW_WORKER_TO_STORE, DELETE_WORKER_FROM_STORE
+   NEW_WORKER_TO_STORE, DELETE_WORKER_FROM_STORE,
+   PUT_OBJECT_IN_FORM
 } from "./actions";
 
 const initialState = {
    visibleModal: {
       visibleModalAddWorker: false,
       visibleModalEditWorker: false,
+   },
+   objectToEdit: {
+
    }
 };
 
@@ -35,8 +39,10 @@ export const workersListReducer = (state = initialState, action) => {
             ...state,
             visibleModal: {
                ...state.visibleModal,
-               [action.payload]: false,
-            }
+               visibleModalAddWorker: false,
+               visibleModalEditWorker: false,
+            },
+            objectToEdit: {},
          })
       case SET_PERSONNEL_NUMBER:
          return ({
@@ -129,6 +135,11 @@ export const workersListReducer = (state = initialState, action) => {
             workersList: state.workersList
                .filter((obj) => +obj.id !== +action.payload),
             newWorkerInfo: {},
+         })
+      case PUT_OBJECT_IN_FORM:
+         return ({
+            ...state,
+            objectToEdit: action.payload
          })
       default: return state
    }

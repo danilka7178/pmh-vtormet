@@ -5,7 +5,8 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { setData, openModal } from "../store/workersList/actions";
 
-import ModalAddWorker from "../components/modals/ModalAddWorker"
+import ModalAddWorker from "../components/modals/ModalAddWorker";
+
 
 function ListWorkers() {
 

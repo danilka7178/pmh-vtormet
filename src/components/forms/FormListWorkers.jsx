@@ -6,18 +6,22 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-
 import { useSelector } from "react-redux";
 
 const FormListWorker = ({ disabledButtonAddWorker, handleAdd,
-   changeInputValue, handleClose, titleForm, contentText, contentButton }) => {
+   changeInputValue, handleClose, titleForm, contentText,
+   contentButton, visibleModalDoThingsWithWorker }) => {
 
+   const { personnelNumber, lastName, firstName,
+      middleName, birthdayDate,
+      division, employmentDate } = useSelector(state => state.workersListVault.objectToEdit);
 
-   const visibleModalAddWorker = useSelector(state => state.workersListVault.visibleModal.visibleModalAddWorker);
+   console.log(division)
+
    return (
       <div>
          <Dialog
-            open={visibleModalAddWorker}
+            open={visibleModalDoThingsWithWorker}
             onClose={handleClose}
             aria-labelledby="form-dialog-title"
          >
@@ -35,6 +39,7 @@ const FormListWorker = ({ disabledButtonAddWorker, handleAdd,
                   label="Табельный №"
                   type="text"
                   fullWidth
+                  value={personnelNumber ? personnelNumber : ""}
                   onChange={changeInputValue}
                />
                <TextField
@@ -43,6 +48,7 @@ const FormListWorker = ({ disabledButtonAddWorker, handleAdd,
                   label="Фамилия"
                   type="text"
                   fullWidth
+                  value={lastName ? lastName : ""}
                   onChange={changeInputValue}
                />
                <TextField
@@ -51,6 +57,7 @@ const FormListWorker = ({ disabledButtonAddWorker, handleAdd,
                   label="Имя"
                   type="text"
                   fullWidth
+                  value={firstName ? firstName : ""}
                   onChange={changeInputValue}
                />
                <TextField
@@ -59,6 +66,7 @@ const FormListWorker = ({ disabledButtonAddWorker, handleAdd,
                   label="Отчество"
                   type="text"
                   fullWidth
+                  value={middleName ? middleName : ""}
                   onChange={changeInputValue}
                />
                <TextField
@@ -68,6 +76,7 @@ const FormListWorker = ({ disabledButtonAddWorker, handleAdd,
                   label="Дата рождения"
                   type="date"
                   fullWidth
+                  value={birthdayDate ? birthdayDate : ""}
                   onChange={changeInputValue}
                />
                <TextField
@@ -76,6 +85,7 @@ const FormListWorker = ({ disabledButtonAddWorker, handleAdd,
                   label="Подразделение"
                   type="text"
                   fullWidth
+                  value={""}
                   onChange={changeInputValue}
                />
                <TextField
@@ -84,6 +94,7 @@ const FormListWorker = ({ disabledButtonAddWorker, handleAdd,
                   label="Должность"
                   type="text"
                   fullWidth
+                  value={""}
                   onChange={changeInputValue}
                />
                <TextField
@@ -93,6 +104,7 @@ const FormListWorker = ({ disabledButtonAddWorker, handleAdd,
                   label="Дата приема на работу"
                   type="date"
                   fullWidth
+                  value={employmentDate ? employmentDate : ""}
                   onChange={changeInputValue}
                />
             </DialogContent>

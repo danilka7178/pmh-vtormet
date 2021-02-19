@@ -4,8 +4,10 @@ import {
    getWorkersFromServer,
    deleteWorkerFromServer,
    deleteWorkerFromStore,
-   openModal
+   openModal, putObjectInForm
 } from "../store/workersList/actions";
+
+import ModalEditWorker from "../components/modals/ModalEditWorker"
 
 const columns = [
    { field: 'personnelNumber', headerName: 'Табельный №', width: 170 },
@@ -30,7 +32,6 @@ function WorkersTable() {
    const data = useSelector(state => state.workersListVault.workersList);
 
    const clickRemoveWorker = (e) => {
-      console.log(e.target.id, data)
       dispatch(deleteWorkerFromStore(e.target.id))
       const requestDeleteWorker = window.confirm(`Вы действительно хотите удалить работника?`)
       if (requestDeleteWorker) {
@@ -39,8 +40,14 @@ function WorkersTable() {
    }
 
    const clickChangeWorker = (e) => {
-      console.log(`Клик по изменению id: ${e.target.id}`)
       dispatch(openModal("visibleModalEditWorker"))
+
+      const objectToEdit = data.find((obj) => {
+         return (
+            obj.id === e.target.id
+         )
+      })
+      dispatch(putObjectInForm(objectToEdit))
    }
 
 
@@ -92,6 +99,7 @@ function WorkersTable() {
             </tbody>
          </table>) :
             <h4>Подгружаю список сотрудников</h4>}
+         <ModalEditWorker />
       </div>
    );
 }

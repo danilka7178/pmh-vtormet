@@ -14,6 +14,7 @@ export const SET_EMPLOYMENT_DATE = "SET_EMPLOYMENT_DATE";
 export const RESET_FORM = "RESET_FORM";
 export const NEW_WORKER_TO_STORE = "NEW_WORKER_TO_STORE";
 export const DELETE_WORKER_FROM_STORE = "DELETE_WORKER_FROM_STORE";
+export const PUT_OBJECT_IN_FORM = "PUT_OBJECT_IN_FORM";
 
 export const setData = (data) => ({
    type: SET_DATA,
@@ -95,3 +96,8 @@ export const postNewWorkerToServer = (data) => () => {
 export const deleteWorkerFromServer = (id) => () => {
    axios.delete(`https://6024f2ad36244d001797b2c7.mockapi.io/Workers/${id}`)
 }
+
+export const putObjectInForm = (data) => ({
+   type: PUT_OBJECT_IN_FORM,
+   payload: data,
+})
