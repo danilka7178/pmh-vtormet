@@ -12,11 +12,11 @@ const FormListWorker = ({ disabledButtonAddWorker, handleAdd,
    changeInputValue, handleClose, titleForm, contentText,
    contentButton, visibleModalDoThingsWithWorker }) => {
 
-   const { personnelNumber, lastName, firstName,
-      middleName, birthdayDate,
+   const { personnelNumber, lastName,
+      firstName, middleName, birthdayDate,
       division, employmentDate } = useSelector(state => state.workersListVault.objectToEdit);
 
-   console.log(division)
+   console.log("")
 
    return (
       <div>
@@ -85,7 +85,7 @@ const FormListWorker = ({ disabledButtonAddWorker, handleAdd,
                   label="Подразделение"
                   type="text"
                   fullWidth
-                  value={""}
+                  value={division ? division.position : ""}
                   onChange={changeInputValue}
                />
                <TextField
@@ -94,7 +94,7 @@ const FormListWorker = ({ disabledButtonAddWorker, handleAdd,
                   label="Должность"
                   type="text"
                   fullWidth
-                  value={""}
+                  value={division ? division.subDivision : ""}
                   onChange={changeInputValue}
                />
                <TextField
