@@ -7,8 +7,7 @@ const ModalEditWorker = () => {
    const {
       handleClose, changeInputValue,
       handleAdd, disabledButtonAddWorker,
-      visibleModalDoThingsWithWorker,
-      valueContent
+      visibleModalDoThingsWithWorker
    } = useForm({ isEdit: true });
 
    return (
@@ -21,7 +20,6 @@ const ModalEditWorker = () => {
          handleAdd={handleAdd}
          changeInputValue={changeInputValue}
          handleClose={handleClose}
-         valueContent={valueContent}
       />
    );
 }

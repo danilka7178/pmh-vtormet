@@ -16,7 +16,19 @@ const FormListWorker = ({ disabledButtonAddWorker, handleAdd,
       firstName, middleName, birthdayDate,
       division, employmentDate } = useSelector(state => state.workersListVault.objectToEdit);
 
-   console.log("")
+   const transformationDate = (date) => {
+      if (date) {
+         const someTryMassive = [];
+         const newMassive = date.replace(/\./g, "-").split("");
+         someTryMassive.push(newMassive[6], newMassive[7], newMassive[8],
+            newMassive[9], newMassive[5],
+            newMassive[3], newMassive[4], newMassive[2],
+            newMassive[0], newMassive[1])
+         return (
+            someTryMassive.join("")
+         )
+      }
+   }
 
    return (
       <div>
@@ -76,7 +88,7 @@ const FormListWorker = ({ disabledButtonAddWorker, handleAdd,
                   label="Дата рождения"
                   type="date"
                   fullWidth
-                  value={birthdayDate ? birthdayDate : ""}
+                  value={birthdayDate ? transformationDate(birthdayDate) : ""}
                   onChange={changeInputValue}
                />
                <TextField
@@ -104,7 +116,7 @@ const FormListWorker = ({ disabledButtonAddWorker, handleAdd,
                   label="Дата приема на работу"
                   type="date"
                   fullWidth
-                  value={employmentDate ? employmentDate : ""}
+                  value={employmentDate ? transformationDate(employmentDate) : ""}
                   onChange={changeInputValue}
                />
             </DialogContent>
