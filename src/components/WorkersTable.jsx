@@ -41,7 +41,6 @@ function WorkersTable() {
 
    const clickChangeWorker = (e) => {
       dispatch(openModal("visibleModalEditWorker"))
-
       const objectToEdit = data.find((obj) => {
          return (
             obj.id === e.target.id

@@ -10,6 +10,7 @@ import {
    setDivisionPosition, setDivisionSubDivision,
    setEmploymentDate, resetFormAddWorker,
    putNewWorkerToStore, postNewWorkerToServer,
+   deleteWorkerFromStore, deleteWorkerFromServer
 } from "../store/workersList/actions";
 
 const deaultObj = {
@@ -65,17 +66,17 @@ function useForm({ isEdit } = deaultObj) {
 
    const handleAdd = () => {
       if (!isEdit) {
+         console.log(objectToEdit.id)
          dispatch(putNewWorkerToStore(newWorkerInfo));
          dispatch(postNewWorkerToServer(newWorkerInfo));
          dispatch(closeModal("visibleModalAddWorker"));
       } else {
-         dispatch(putNewWorkerToStore(objectToEdit));
-         dispatch(postNewWorkerToServer(objectToEdit));
+         const newObjectToStore = { ...objectToEdit, ...newWorkerInfo }
+         dispatch(deleteWorkerFromServer(objectToEdit.id));
+         dispatch(putNewWorkerToStore(newObjectToStore));
+         dispatch(postNewWorkerToServer(newObjectToStore));
+         dispatch(deleteWorkerFromStore(objectToEdit.id));
          dispatch(closeModal("visibleModalAddWorker"));
-         return (
-            console.log("Пиши логику изменения")
-
-         )
       }
    }
 
