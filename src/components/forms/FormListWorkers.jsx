@@ -20,10 +20,12 @@ const FormListWorker = ({ disabledButtonAddWorker, handleAdd,
       if (date) {
          const someTryMassive = [];
          const newMassive = date.replace(/\./g, "-").split("");
+
          someTryMassive.push(newMassive[6], newMassive[7], newMassive[8],
             newMassive[9], newMassive[5],
             newMassive[3], newMassive[4], newMassive[2],
             newMassive[0], newMassive[1])
+
          return (
             someTryMassive.join("")
          )
@@ -51,7 +53,7 @@ const FormListWorker = ({ disabledButtonAddWorker, handleAdd,
                   label="Табельный №"
                   type="text"
                   fullWidth
-                  value={personnelNumber ? personnelNumber : ""}
+                  defaultValue={personnelNumber ? personnelNumber : ""}
                   onChange={changeInputValue}
                />
                <TextField
@@ -60,7 +62,7 @@ const FormListWorker = ({ disabledButtonAddWorker, handleAdd,
                   label="Фамилия"
                   type="text"
                   fullWidth
-                  value={lastName ? lastName : ""}
+                  defaultValue={lastName ? lastName : ""}
                   onChange={changeInputValue}
                />
                <TextField
@@ -69,7 +71,7 @@ const FormListWorker = ({ disabledButtonAddWorker, handleAdd,
                   label="Имя"
                   type="text"
                   fullWidth
-                  value={firstName ? firstName : ""}
+                  defaultValue={firstName ? firstName : ""}
                   onChange={changeInputValue}
                />
                <TextField
@@ -78,7 +80,7 @@ const FormListWorker = ({ disabledButtonAddWorker, handleAdd,
                   label="Отчество"
                   type="text"
                   fullWidth
-                  value={middleName ? middleName : ""}
+                  defaultValue={middleName ? middleName : ""}
                   onChange={changeInputValue}
                />
                <TextField
@@ -88,7 +90,7 @@ const FormListWorker = ({ disabledButtonAddWorker, handleAdd,
                   label="Дата рождения"
                   type="date"
                   fullWidth
-                  value={birthdayDate ? transformationDate(birthdayDate) : ""}
+                  defaultValue={birthdayDate ? transformationDate(birthdayDate) : ""}
                   onChange={changeInputValue}
                />
                <TextField
@@ -97,7 +99,7 @@ const FormListWorker = ({ disabledButtonAddWorker, handleAdd,
                   label="Подразделение"
                   type="text"
                   fullWidth
-                  value={division ? division.position : ""}
+                  defaultValue={division ? division.position : ""}
                   onChange={changeInputValue}
                />
                <TextField
@@ -106,7 +108,7 @@ const FormListWorker = ({ disabledButtonAddWorker, handleAdd,
                   label="Должность"
                   type="text"
                   fullWidth
-                  value={division ? division.subDivision : ""}
+                  defaultValue={division ? division.subDivision : ""}
                   onChange={changeInputValue}
                />
                <TextField
@@ -116,7 +118,7 @@ const FormListWorker = ({ disabledButtonAddWorker, handleAdd,
                   label="Дата приема на работу"
                   type="date"
                   fullWidth
-                  value={employmentDate ? transformationDate(employmentDate) : ""}
+                  defaultValue={employmentDate ? transformationDate(employmentDate) : ""}
                   onChange={changeInputValue}
                />
             </DialogContent>

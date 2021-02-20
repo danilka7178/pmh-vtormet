@@ -24,6 +24,7 @@ function useForm({ isEdit } = deaultObj) {
 
    const visibleModalAddWorker = useSelector(state => state.workersListVault.visibleModal.visibleModalAddWorker);
    const visibleModalEditWorker = useSelector(state => state.workersListVault.visibleModal.visibleModalEditWorker);
+   const objectToEdit = useSelector(state => state.workersListVault.objectToEdit);
 
    const visibleModalDoThingsWithWorker = () => {
       if (!isEdit) {
@@ -63,22 +64,36 @@ function useForm({ isEdit } = deaultObj) {
    }
 
    const handleAdd = () => {
-      dispatch(putNewWorkerToStore(newWorkerInfo));
-      dispatch(postNewWorkerToServer(newWorkerInfo));
-      dispatch(closeModal("visibleModalAddWorker"));
+      if (!isEdit) {
+         dispatch(putNewWorkerToStore(newWorkerInfo));
+         dispatch(postNewWorkerToServer(newWorkerInfo));
+         dispatch(closeModal("visibleModalAddWorker"));
+      } else {
+         dispatch(putNewWorkerToStore(objectToEdit));
+         dispatch(postNewWorkerToServer(objectToEdit));
+         dispatch(closeModal("visibleModalAddWorker"));
+         return (
+            console.log("Пиши логику изменения")
+
+         )
+      }
    }
 
    const disabledButtonAddWorker = () => {
-      return !!newWorkerInfo &&
-         newWorkerInfo.personnelNumber &&
-         newWorkerInfo.lastName &&
-         newWorkerInfo.firstName &&
-         newWorkerInfo.middleName &&
-         newWorkerInfo.birthdayDate &&
-         newWorkerInfo.division &&
-         newWorkerInfo.division.position &&
-         newWorkerInfo.division.subDivision &&
-         newWorkerInfo.employmentDate
+      if (!isEdit) {
+         return !!newWorkerInfo &&
+            newWorkerInfo.personnelNumber &&
+            newWorkerInfo.lastName &&
+            newWorkerInfo.firstName &&
+            newWorkerInfo.middleName &&
+            newWorkerInfo.birthdayDate &&
+            newWorkerInfo.division &&
+            newWorkerInfo.division.position &&
+            newWorkerInfo.division.subDivision &&
+            newWorkerInfo.employmentDate
+      } else {
+         return true
+      }
    }
 
    return {
