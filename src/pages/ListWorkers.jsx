@@ -21,6 +21,31 @@ function ListWorkers() {
             dispatch(setData(data));
          };
          getData();
+      } else if (e.code === "Backspace") {
+         const getData = async () => {
+            const { data } = await axios.get("https://6024f2ad36244d001797b2c7.mockapi.io/Workers");
+            const filteredData = data.filter(({
+               firstName,
+               lastName,
+               middleName,
+               personnelNumber,
+               employmentDate,
+               birthdayDate,
+               division }) => {
+               return (
+                  firstName.toLocaleLowerCase().includes(inputSearchWorkerValue.toLocaleLowerCase()) ||
+                  lastName.toLocaleLowerCase().includes(inputSearchWorkerValue.toLocaleLowerCase()) ||
+                  middleName.toLocaleLowerCase().includes(inputSearchWorkerValue.toLocaleLowerCase()) ||
+                  personnelNumber.toString().toLocaleLowerCase().includes(inputSearchWorkerValue.toString().toLocaleLowerCase()) ||
+                  employmentDate.toString().toLocaleLowerCase().includes(inputSearchWorkerValue.toString().toLocaleLowerCase()) ||
+                  birthdayDate.toString().toLocaleLowerCase().includes(inputSearchWorkerValue.toString().toLocaleLowerCase()) ||
+                  division.position.toLocaleLowerCase().includes(inputSearchWorkerValue.toLocaleLowerCase()) ||
+                  division.subDivision.toLocaleLowerCase().includes(inputSearchWorkerValue.toLocaleLowerCase())
+               )
+            })
+            dispatch(setData(filteredData));
+         };
+         getData();
       }
       else {
          const filteredData = data.filter(({
