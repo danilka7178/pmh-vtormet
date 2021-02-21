@@ -71,12 +71,15 @@ function useForm({ isEdit } = deaultObj) {
          dispatch(postNewWorkerToServer(newWorkerInfo));
          dispatch(closeModal("visibleModalAddWorker"));
       } else {
-         const newObjectToStore = { ...objectToEdit, ...newWorkerInfo }
-         dispatch(deleteWorkerFromServer(objectToEdit.id));
-         dispatch(putNewWorkerToStore(newObjectToStore));
+         const newObjectToStore = { ...objectToEdit, ...newWorkerInfo };
+
          dispatch(postNewWorkerToServer(newObjectToStore));
-         dispatch(deleteWorkerFromStore(objectToEdit.id));
+         dispatch(putNewWorkerToStore(newObjectToStore));
          dispatch(closeModal("visibleModalAddWorker"));
+
+         dispatch(deleteWorkerFromServer(objectToEdit.id));
+         dispatch(deleteWorkerFromStore(objectToEdit.id));
+
       }
    }
 
