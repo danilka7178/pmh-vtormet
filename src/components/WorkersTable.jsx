@@ -7,7 +7,8 @@ import {
    openModal, putObjectInForm
 } from "../store/workersList/actions";
 
-import ModalEditWorker from "../components/modals/ModalEditWorker"
+import ModalEditWorker from "../components/modals/ModalEditWorker";
+import ButtonSort from "./ButtonSort";
 
 const columns = [
    { field: 'personnelNumber', headerName: 'Табельный №', width: 170 },
@@ -17,7 +18,7 @@ const columns = [
    { field: 'birthdayDate', headerName: 'Дата рождения', type: 'date', width: 210, },
    { field: 'subDivision', headerName: 'Подразделение', width: 250 },
    { field: 'position', headerName: 'Должность', width: 150 },
-   { field: 'employmentDate', headerName: 'Дата приема на работу', type: 'date', width: 210, },
+   { field: 'employmentDate', headerName: `Дата приема на работу`, type: 'date', width: 210, },
    { field: 'changeOrDelete', headerName: 'Изменение', width: 50, },
 ];
 
@@ -62,6 +63,7 @@ function WorkersTable() {
                            className="workers-table__column-title"
                         >
                            {headerName}
+                           <ButtonSort id={headerName} />
                         </th>
                      )
                   })}
@@ -73,7 +75,7 @@ function WorkersTable() {
                   birthdayDate, personnelNumber,
                   division, employmentDate }) => {
                   return (
-                     <tr key={`${id} + ${firstName}`}><td>{personnelNumber}</td><td>{lastName}</td>
+                     <tr key={`${id}_${firstName}`}><td>{personnelNumber}</td><td>{lastName}</td>
                         <td>{firstName}</td><td>{middleName}</td>
                         <td>{birthdayDate}</td><td>{division.subDivision}</td>
                         <td>{division.position}</td>

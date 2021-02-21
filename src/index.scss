@@ -94,6 +94,8 @@ code {
     text-align: center;
     padding: 5px;
     word-break: break-all;
+    line-height: 20px;
+    position: relative;
 
     border-collapse: collapse;
     border: 3px solid rgb(35, 44, 0);
@@ -101,19 +103,19 @@ code {
       width: 8%;
     }
     &:nth-child(2) {
-      width: 10%;
+      width: 11%;
     }
     &:nth-child(3) {
-      width: 10%;
+      width: 11%;
     }
     &:nth-child(4) {
-      width: 10%;
+      width: 11%;
     }
     &:nth-child(5) {
       width: 10%;
     }
     &:nth-child(6) {
-      width: 15%;
+      width: 10%;
     }
     &:nth-child(7) {
       width: 20%;
@@ -122,13 +124,107 @@ code {
       width: 10%;
     }
     &:nth-child(9) {
-      width: 5%;
+      width: 7%;
     }
   }
   @media (max-width: 1200px) {
     font-size: 12px;
   }
 }
+
+.button-sort {
+  margin: 0px 0px 0px 10px;
+  padding: 0;
+  border: 0;
+  background: 0;
+  border-radius: 5px;
+  width: 15px;
+  height: 15px;
+  right: 3px;
+  top: 50%;
+  transform: translate(0, -50%);
+
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    background-color: rgb(239, 253, 42);
+    outline: 1px solid black;
+  }
+  &:active {
+    background-color: rgb(235, 248, 164);
+  }
+
+  position: absolute;
+  transition: all 0.3s ease-out;
+
+  &:after {
+    content: "";
+    background-color: black;
+    color: black;
+    width: 5px;
+    height: 1px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    position: absolute;
+    transition: all 0.15s ease-out;
+  }
+
+  &--increase {
+    &:before {
+      content: "";
+      background-color: black;
+      color: black;
+      width: 8px;
+      height: 1px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, 0);
+      transform: rotate(-45deg);
+      position: absolute;
+    }
+    &:after {
+      content: "";
+      background-color: black;
+      color: black;
+      width: 8px;
+      height: 1px;
+      top: 50%;
+      left: 11%;
+      transform: translate(-50%, 0);
+      transform: rotate(45deg);
+      position: absolute;
+    }
+  }
+  &--increase--r {
+    &:before {
+      content: "";
+      background-color: black;
+      color: black;
+      width: 8px;
+      height: 1px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, 0);
+      transform: rotate(45deg);
+      position: absolute;
+    }
+    &:after {
+      content: "";
+      background-color: black;
+      color: black;
+      width: 8px;
+      height: 1px;
+      top: 50%;
+      left: 11%;
+      transform: translate(-50%, 0);
+      transform: rotate(-45deg);
+      position: absolute;
+    }
+  }
+}
+
 tr {
   &:nth-child(even) {
     background-color: rgb(221, 221, 221);

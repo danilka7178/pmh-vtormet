@@ -20,7 +20,6 @@ const initialState = {
 };
 
 export const workersListReducer = (state = initialState, action) => {
-   console.log(state)
    switch (action.type) {
       case SET_DATA:
          return ({
