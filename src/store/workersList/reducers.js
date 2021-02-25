@@ -50,7 +50,7 @@ export const workersListReducer = (state = initialState, action) => {
             newWorkerInfo: {
                ...state.newWorkerInfo,
                personnelNumber: action.payload,
-               id: +state.workersList[state.workersList.length - 1].id + 1
+               id: (+state.workersList[state.workersList.length - 1].id + 1).toString()
             }
          })
       case SET_LAST_NAME:
@@ -127,6 +127,7 @@ export const workersListReducer = (state = initialState, action) => {
                ...state.workersList,
                action.payload
             ],
+            objectToEdit: {},
             newWorkerInfo: {},
          })
       case DELETE_WORKER_FROM_STORE:
@@ -134,7 +135,6 @@ export const workersListReducer = (state = initialState, action) => {
             ...state,
             workersList: state.workersList
                .filter((obj) => +obj.id !== +action.payload),
-            newWorkerInfo: {},
          })
       case PUT_OBJECT_IN_FORM:
          return ({
@@ -143,5 +143,4 @@ export const workersListReducer = (state = initialState, action) => {
          })
       default: return state
    }
-
 }

@@ -33,9 +33,9 @@ function WorkersTable() {
    const data = useSelector(state => state.workersListVault.workersList);
 
    const clickRemoveWorker = (e) => {
-      dispatch(deleteWorkerFromStore(e.target.id))
       const requestDeleteWorker = window.confirm(`Вы действительно хотите удалить работника?`)
       if (requestDeleteWorker) {
+         dispatch(deleteWorkerFromStore(e.target.id))
          dispatch(deleteWorkerFromServer(e.target.id))
       }
    }

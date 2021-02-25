@@ -5,12 +5,10 @@ function ButtonSort({ id }) {
    const [buttonClassName, setButtonClassName] = React.useState("button-sort");
 
    const handleClickOnButtonSort = (e) => {
-      console.log(`Клик по кнопке, id заголовка: ${e.target.id}`)
-      console.log(`Класс: ${e.target.className}`)
       if (buttonClassName === "button-sort") {
          setButtonClassName("button-sort button-sort--increase")
       } else if (buttonClassName === "button-sort button-sort--increase") {
-         setButtonClassName("button-sort button-sort--increase--r")
+         setButtonClassName("button-sort button-sort--increase-reverse")
       } else {
          setButtonClassName("button-sort")
       }
@@ -22,7 +20,6 @@ function ButtonSort({ id }) {
          className={buttonClassName}
          onClick={handleClickOnButtonSort}
       >
-
       </button>
    )
 }
