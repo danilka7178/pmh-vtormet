@@ -1,3 +1,4 @@
+import produce from "immer";
 import {
    CLICK_SORT_INCREASE,
    CLICK_SORT_REVERSE,
@@ -9,26 +10,17 @@ const initialState = {
    buttonSortReverse: false,
 }
 
-export const sortReducer = (state = initialState, action) => {
-   switch (action.type) {
-      case CLICK_SORT_INCREASE:
-         return ({
-            ...state,
-            buttonSortReverse: false,
-            buttonSortIncrease: true,
-         })
-      case CLICK_SORT_REVERSE:
-         return ({
-            ...state,
-            buttonSortReverse: true,
-            buttonSortIncrease: false,
-         })
-      case CLICK_SORT_DEFAULT:
-         return ({
-            ...state,
-            buttonSortReverse: false,
-            buttonSortIncrease: false,
-         })
-      default: return state
+export const sortReducer = produce((draftState, action) => {
+   if (action.type === CLICK_SORT_INCREASE) {
+      draftState.buttonSortIncrease = true;
+      draftState.buttonSortReverse = false;
    }
-}
+   if (action.type === CLICK_SORT_REVERSE) {
+      draftState.buttonSortReverse = true;
+      draftState.buttonSortIncrease = false;
+   }
+   if (action.type === CLICK_SORT_DEFAULT) {
+      draftState.buttonSortReverse = false;
+      draftState.buttonSortIncrease = false;
+   }
+}, initialState)
