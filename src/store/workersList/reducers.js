@@ -15,7 +15,6 @@ const initialState = {
       visibleModalEditWorker: false,
    },
    objectToEdit: {
-
    }
 };
 
