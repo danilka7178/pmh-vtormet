@@ -25,6 +25,7 @@ function ButtonSort({ id }) {
       }
    }
 
+
    //! Функция по нажатия на кнопку сортировки
    const handleClickOnButtonSort = async (e) => {
 
@@ -269,14 +270,13 @@ function ButtonSort({ id }) {
       }
    }
 
-
    return (
       <button
          id={id}
          className={buttonClass}
          onClick={handleClickOnButtonSort}
       >
-      </button>
+      </button >
    )
 }
 
