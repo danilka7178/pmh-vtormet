@@ -53,6 +53,7 @@ function useForm({ isEdit } = deaultObj) {
          case "birthdayDate":
             return dispatch(setBirthdayDate(moment(e.target.value).format('L')));
          case "divisionPosition":
+            console.log(newWorkerInfo, e.target.value)
             return dispatch(setDivisionPosition(e.target.value));
          case "divisionSubDivision":
             return dispatch(setDivisionSubDivision(e.target.value));

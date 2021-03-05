@@ -181,7 +181,7 @@ code {
       top: 50%;
       left: 50%;
       transform: translate(-50%, 0);
-      transform: rotate(-45deg);
+      transform: rotate(45deg);
       position: absolute;
     }
     &:after {
@@ -193,10 +193,11 @@ code {
       top: 50%;
       left: 11%;
       transform: translate(-50%, 0);
-      transform: rotate(45deg);
+      transform: rotate(-45deg);
       position: absolute;
     }
   }
+
   &--increase-reverse {
     &:before {
       content: "";
@@ -207,7 +208,7 @@ code {
       top: 50%;
       left: 50%;
       transform: translate(-50%, 0);
-      transform: rotate(45deg);
+      transform: rotate(-45deg);
       position: absolute;
     }
     &:after {
@@ -219,7 +220,7 @@ code {
       top: 50%;
       left: 11%;
       transform: translate(-50%, 0);
-      transform: rotate(-45deg);
+      transform: rotate(45deg);
       position: absolute;
     }
   }
