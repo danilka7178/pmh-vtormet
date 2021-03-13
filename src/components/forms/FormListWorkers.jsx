@@ -16,6 +16,8 @@ const FormListWorker = ({ disabledButtonAddWorker, handleAdd,
       firstName, middleName, birthdayDate,
       division, employmentDate } = useSelector(state => state.workersListVault.objectToEdit);
 
+   console.log(division)
+
    const transformationDate = (date) => {
       if (date) {
          const someTryMassive = [];
@@ -95,20 +97,20 @@ const FormListWorker = ({ disabledButtonAddWorker, handleAdd,
                />
                <TextField
                   margin="dense"
-                  id="divisionPosition"
+                  id="divisionSubDivision"
                   label="Подразделение"
                   type="text"
                   fullWidth
-                  defaultValue={division ? division.position : ""}
+                  defaultValue={division ? division.subDivision : ""}
                   onChange={changeInputValue}
                />
                <TextField
                   margin="dense"
-                  id="divisionSubDivision"
+                  id="divisionPosition"
                   label="Должность"
                   type="text"
                   fullWidth
-                  defaultValue={division ? division.subDivision : ""}
+                  defaultValue={division ? division.position : ""}
                   onChange={changeInputValue}
                />
                <TextField

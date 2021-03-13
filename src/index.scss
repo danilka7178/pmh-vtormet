@@ -14,6 +14,29 @@ code {
   margin: 0px auto;
 }
 
+.go-home-page-button {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 60px;
+  padding: 10px 0px;
+  border: none;
+  border-radius: 5px;
+  font-weight: 700;
+  background-color: rgb(205, 255, 163);
+  color: black;
+
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    outline: 1px solid black;
+  }
+  &:active {
+    background-color: rgb(230, 255, 210);
+  }
+}
+
 //? list-workers ------------------------------------------------------------------------------
 .container {
   margin: 20px;
@@ -23,6 +46,7 @@ code {
 }
 .list-workers {
   text-align: center;
+  position: relative;
 
   &__description {
     font-size: 25px;
@@ -263,4 +287,13 @@ td {
   &:active {
     background-color: rgb(235, 248, 164);
   }
+}
+
+//? list-techniques ------------------------------------------------------------------------------
+.container1 {
+  margin: 30px;
+}
+
+.list-techniques {
+  padding: 40px 0px 0px 0px;
 }

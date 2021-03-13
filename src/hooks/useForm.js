@@ -53,7 +53,6 @@ function useForm({ isEdit } = deaultObj) {
          case "birthdayDate":
             return dispatch(setBirthdayDate(moment(e.target.value).format('L')));
          case "divisionPosition":
-            console.log(newWorkerInfo, e.target.value)
             return dispatch(setDivisionPosition(e.target.value));
          case "divisionSubDivision":
             return dispatch(setDivisionSubDivision(e.target.value));
@@ -72,10 +71,13 @@ function useForm({ isEdit } = deaultObj) {
          dispatch(closeModal("visibleModalAddWorker"));
       } else {
          const newObjectToStore = { ...objectToEdit, ...newWorkerInfo };
-
+         console.log("objectToEdit:")
+         console.log(objectToEdit)
+         console.log("newWorkerInfo:")
+         console.log(newWorkerInfo)
          dispatch(postNewWorkerToServer(newObjectToStore));
          dispatch(deleteWorkerFromStore(objectToEdit.id));
-         dispatch(putNewWorkerToStore(newObjectToStore));
+         dispatch(putNewWorkerToStore(newObjectToStore))
          dispatch(deleteWorkerFromServer(objectToEdit.id));
          dispatch(closeModal("visibleModalAddWorker"));
       }

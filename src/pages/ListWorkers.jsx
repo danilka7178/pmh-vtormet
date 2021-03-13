@@ -4,9 +4,9 @@ import axios from "axios";
 
 import { useSelector, useDispatch } from "react-redux";
 import { setData, openModal } from "../store/workersList/actions";
+import { setCurrentPage } from "../store/pagesList/actions";
 
 import ModalAddWorker from "../components/modals/ModalAddWorker";
-
 
 function ListWorkers() {
 
@@ -75,9 +75,19 @@ function ListWorkers() {
       dispatch(openModal("visibleModalAddWorker"));
    }
 
+   const handleClickButtonGoBack = () => {
+      dispatch(setCurrentPage(""))
+   }
+
    return (
       <div className="container">
          <div className="list-workers">
+            <button
+               className="go-home-page-button"
+               onClick={handleClickButtonGoBack}
+            >
+               Назад
+            </button>
             <div className="list-workers__description">Список сотрудников ООО "ПМХ-ВТОРМЕТ"</div>
             <div className="list-workers__side">
                <button
