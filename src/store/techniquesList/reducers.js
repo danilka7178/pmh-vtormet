@@ -55,6 +55,6 @@ export const techniquesListReducer = produce((draftState, action) => {
       draftState.techniquesList.push(action.payload)
    }
    else if (action.type === REMOVE_OLD_TECHNIQUE_FROM_STORE) {
-      draftState.techniquesList.filter((obj) => +obj.id !== +action.payload)
+      draftState.techniquesList = draftState.techniquesList.filter((obj) => +obj.id !== +draftState.currentTechnique.id);
    }
 }, initialState)

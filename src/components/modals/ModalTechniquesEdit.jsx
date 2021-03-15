@@ -8,7 +8,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 import {
-   changeVisibleModal, setCurrentTechnique,
+   changeVisibleModal,
    setStateNumberCurrentTechnique,
    setBrandCurrentTechnique,
    setInventoryNumberCurrentTechnique,
@@ -31,7 +31,6 @@ function ModalTechniquesEdit() {
    const handleConfirm = () => {
       dispatch(changeVisibleModal("editing"))
       dispatch(changeTechniqueInfo(currentTechnique))
-      // dispatch(setCurrentTechnique({}))
    };
 
    const editTextField = (e) => {

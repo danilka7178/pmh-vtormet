@@ -67,7 +67,7 @@ export const removeOldTechniqueFromStore = (id) => ({
 
 export const changeTechniqueInfo = (data) => (dispatch) => {
    dispatch(removeOldTechniqueFromStore(+data.id))
-   // dispatch(postNewTechniqueToServer(data))
-   // dispatch(putNewTechniqueToStore(data))
-   // axios.delete(`https://6024f2ad36244d001797b2c7.mockapi.io/Techniques/${data.id}`)
+   dispatch(postNewTechniqueToServer(data))
+   dispatch(putNewTechniqueToStore(data))
+   axios.delete(`https://6024f2ad36244d001797b2c7.mockapi.io/Techniques/${data.id}`)
 }
