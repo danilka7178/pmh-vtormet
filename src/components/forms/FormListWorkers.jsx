@@ -16,8 +16,6 @@ const FormListWorker = ({ disabledButtonAddWorker, handleAdd,
       firstName, middleName, birthdayDate,
       division, employmentDate } = useSelector(state => state.workersListVault.objectToEdit);
 
-   console.log(division)
-
    const transformationDate = (date) => {
       if (date) {
          const someTryMassive = [];

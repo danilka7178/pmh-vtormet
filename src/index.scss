@@ -16,8 +16,8 @@ code {
 
 .go-home-page-button {
   position: absolute;
-  left: 0px;
-  top: 0px;
+  left: 3px;
+  top: 3px;
   width: 60px;
   padding: 10px 0px;
   border: none;
@@ -35,6 +35,10 @@ code {
   &:active {
     background-color: rgb(230, 255, 210);
   }
+}
+
+.button-menu {
+  margin: 0px 0px 20px 0px;
 }
 
 //? list-workers ------------------------------------------------------------------------------
@@ -290,10 +294,22 @@ td {
 }
 
 //? list-techniques ------------------------------------------------------------------------------
-.container1 {
-  margin: 30px;
-}
-
 .list-techniques {
-  padding: 40px 0px 0px 0px;
+  &__container {
+    margin: 20px;
+  }
+
+  &__description {
+    text-align: center;
+  }
+
+  &__side {
+    margin: 0px 0px 20px 0px;
+  }
+  &__table-container {
+  }
+  &__table {
+  }
+  &__summary-info {
+  }
 }

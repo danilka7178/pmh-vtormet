@@ -3,12 +3,11 @@ import WorkersTable from "../components/WorkersTable";
 import axios from "axios";
 
 import { useSelector, useDispatch } from "react-redux";
-import { setData, openModal } from "../store/workersList/actions";
-import { setCurrentPage } from "../store/pagesList/actions";
+import { setData } from "../store/workersList/actions";
 
 import ModalAddWorker from "../components/modals/ModalAddWorker";
 
-function ListWorkers() {
+function ListWorkers({ handleClickButtonGoBack, openModalAddWorker }) {
 
    const data = useSelector(state => state.workersListVault.workersList);
    const [inputSearchWorkerValue, setInputSearchWorkerValue] = React.useState("");
@@ -69,14 +68,6 @@ function ListWorkers() {
          })
          dispatch(setData(filteredData));
       }
-   }
-
-   const openModalAddWorker = () => {
-      dispatch(openModal("visibleModalAddWorker"));
-   }
-
-   const handleClickButtonGoBack = () => {
-      dispatch(setCurrentPage(""))
    }
 
    return (
