@@ -10,7 +10,8 @@ const initialState = {
       visibleModalAddWorker: false,
       visibleModalEditWorker: false,
       visibleModalActionsTechniques: false,
-      visibleModalEditingTechniques: false
+      visibleModalEditingTechniques: false,
+      visibleModalAddTechnique: false
    }
 };
 
@@ -23,7 +24,7 @@ export const modalsReducer = produce((draftState, action) => {
       }
    } else if (action.type === CLOSE_MODAL) {
       draftState.visibleModals = {
-         [action.payload]: false
+         [action.payload]: false,
       }
    }
 }, initialState)

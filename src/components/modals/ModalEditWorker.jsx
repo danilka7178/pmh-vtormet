@@ -1,5 +1,5 @@
 import React from 'react';
-import useForm from '../../hooks/useForm';
+import useFormWorkers from '../../hooks/useFormWorkers';
 import FormListWorker from "../forms/FormListWorkers"
 
 const ModalEditWorker = () => {
@@ -8,7 +8,7 @@ const ModalEditWorker = () => {
       handleClose, changeInputValue,
       handleAdd, disabledButtonAddWorker,
       visibleModalDoThingsWithWorker
-   } = useForm({ isEdit: true });
+   } = useFormWorkers({ isEdit: true });
 
    return (
       <FormListWorker

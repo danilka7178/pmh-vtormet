@@ -19,7 +19,7 @@ const deaultObj = {
    isEdit: false,
 }
 
-function useForm({ isEdit } = deaultObj) {
+function useFormWorkers({ isEdit } = deaultObj) {
 
    moment.locale("ru");
    const newWorkerInfo = useSelector(state => state.workersListVault.newWorkerInfo);
@@ -73,10 +73,6 @@ function useForm({ isEdit } = deaultObj) {
          dispatch(closeModal("visibleModalAddWorker"));
       } else {
          const newObjectToStore = { ...objectToEdit, ...newWorkerInfo };
-         console.log("objectToEdit:")
-         console.log(objectToEdit)
-         console.log("newWorkerInfo:")
-         console.log(newWorkerInfo)
          dispatch(postNewWorkerToServer(newObjectToStore));
          dispatch(deleteWorkerFromStore(objectToEdit.id));
          dispatch(putNewWorkerToStore(newObjectToStore))
@@ -111,4 +107,4 @@ function useForm({ isEdit } = deaultObj) {
    }
 }
 
-export default useForm;
+export default useFormWorkers;

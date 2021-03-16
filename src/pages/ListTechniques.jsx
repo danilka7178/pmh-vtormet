@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DataGrid } from '@material-ui/data-grid';
 
-import ModalAddWorker from "../components/modals/ModalAddWorker";
+import ModalTechniquesAdd from "../components/modals/ModalTechniqueAdd";
 import ModalDialogTechniques from "../components/modals/ModalDialogTechniques";
 import { useDispatch, useSelector } from "react-redux";
 import { getTechniquesList, setCurrentTechnique } from "../store/techniquesList/actions";
@@ -75,8 +75,8 @@ function ListTechniques({ handleClickButtonGoBack, handleOpenModal }) {
                {data ? data.length : "0"}
             </div>
          </div>
-         <ModalAddWorker />
          <ModalDialogTechniques />
+         <ModalTechniquesAdd />
       </div>
    );
 }

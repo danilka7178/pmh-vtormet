@@ -4,14 +4,14 @@ import useFormTechniques from "../../hooks/useFormTechniques";
 function ModalTechniquesEdit() {
    const {
       handleClose, handleConfirm,
-      editTextField, currentTechnique,
+      editTextField,
       visibleEditOrAdd
-   } = useFormTechniques({ isEdit: true });
+   } = useFormTechniques();
 
    return (
       <FormListTechniques
-         titleText={"Редактировать"}
-         currentTechnique={currentTechnique}
+         titleText={"Добавить"}
+         currentTechnique={{}}
          handleClose={handleClose}
          handleConfirm={handleConfirm}
          editTextField={editTextField}

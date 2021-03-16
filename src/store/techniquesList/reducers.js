@@ -31,6 +31,7 @@ export const techniquesListReducer = produce((draftState, action) => {
    }
    else if (action.type === SET_INVENTORY_NUMBER_CURRENT_TECHNIQUE) {
       draftState.currentTechnique.inventoryNumber = action.payload
+      draftState.currentTechnique.id = action.payload
    }
    else if (action.type === SET_FUEL_CURRENT_TECHNIQUE) {
       draftState.currentTechnique.fuel = action.payload

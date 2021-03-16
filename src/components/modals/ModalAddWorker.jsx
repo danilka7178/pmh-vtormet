@@ -1,5 +1,5 @@
 import React from 'react';
-import useForm from '../../hooks/useForm';
+import useFormWorkers from '../../hooks/useFormWorkers';
 
 import FormListWorker from "../forms/FormListWorkers"
 
@@ -10,7 +10,7 @@ const ModalAddWorker = () => {
       handleAdd, disabledButtonAddWorker,
       visibleModalDoThingsWithWorker,
       valueContent
-   } = useForm();
+   } = useFormWorkers();
 
 
    return (
