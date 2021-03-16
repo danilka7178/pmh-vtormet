@@ -4,7 +4,7 @@ import 'moment/locale/ru'
 import { useSelector, useDispatch } from "react-redux";
 
 import {
-   closeModal, setPersonnelNumber,
+   setPersonnelNumber,
    setLastName, setFirstName,
    setMiddleName, setBirthdayDate,
    setDivisionPosition, setDivisionSubDivision,
@@ -12,6 +12,8 @@ import {
    putNewWorkerToStore, postNewWorkerToServer,
    deleteWorkerFromStore, deleteWorkerFromServer
 } from "../store/workersList/actions";
+
+import { closeModal } from "../store/modals/actions";
 
 const deaultObj = {
    isEdit: false,
@@ -23,8 +25,8 @@ function useForm({ isEdit } = deaultObj) {
    const newWorkerInfo = useSelector(state => state.workersListVault.newWorkerInfo);
    const dispatch = useDispatch();
 
-   const visibleModalAddWorker = useSelector(state => state.workersListVault.visibleModal.visibleModalAddWorker);
-   const visibleModalEditWorker = useSelector(state => state.workersListVault.visibleModal.visibleModalEditWorker);
+   const visibleModalAddWorker = useSelector(state => state.modalsVault.visibleModals.visibleModalAddWorker);
+   const visibleModalEditWorker = useSelector(state => state.modalsVault.visibleModals.visibleModalEditWorker);
    const objectToEdit = useSelector(state => state.workersListVault.objectToEdit);
 
    const visibleModalDoThingsWithWorker = () => {

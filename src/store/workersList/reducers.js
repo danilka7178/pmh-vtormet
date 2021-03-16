@@ -1,6 +1,5 @@
 import {
-   SET_DATA, OPEN_MODAL,
-   CLOSE_MODAL, SET_PERSONNEL_NUMBER,
+   SET_DATA, SET_PERSONNEL_NUMBER,
    SET_LAST_NAME, SET_FIRST_NAME,
    SET_MIDDLE_NAME, SET_BIRTHDAY_DATE,
    SET_DIVISION_POSITION, SET_DIVISION_SUBDIVISION,
@@ -10,10 +9,6 @@ import {
 } from "./actions";
 
 const initialState = {
-   visibleModal: {
-      visibleModalAddWorker: false,
-      visibleModalEditWorker: false,
-   },
    objectToEdit: {
    }
 };
@@ -24,24 +19,6 @@ export const workersListReducer = (state = initialState, action) => {
          return ({
             ...state,
             workersList: action.payload,
-         })
-      case OPEN_MODAL:
-         return ({
-            ...state,
-            visibleModal: {
-               ...state.visibleModal,
-               [action.payload]: true,
-            }
-         })
-      case CLOSE_MODAL:
-         return ({
-            ...state,
-            visibleModal: {
-               ...state.visibleModal,
-               visibleModalAddWorker: false,
-               visibleModalEditWorker: false,
-            },
-            objectToEdit: {},
          })
       case SET_PERSONNEL_NUMBER:
          return ({

@@ -4,8 +4,9 @@ import {
    getWorkersFromServer,
    deleteWorkerFromServer,
    deleteWorkerFromStore,
-   openModal, putObjectInForm
+   putObjectInForm
 } from "../store/workersList/actions";
+import { openModal } from "../store/modals/actions";
 
 import ModalEditWorker from "../components/modals/ModalEditWorker";
 import ButtonSort from "./ButtonSort";

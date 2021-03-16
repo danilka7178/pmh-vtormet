@@ -40,6 +40,14 @@ code {
 .button-menu {
   margin: 0px 0px 20px 0px;
 }
+//? home-page ------------------------------------------------------------------------------
+.home-page {
+  text-align: center;
+
+  &__description {
+    font-size: 24px;
+  }
+}
 
 //? list-workers ------------------------------------------------------------------------------
 .container {

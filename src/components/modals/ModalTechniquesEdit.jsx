@@ -8,28 +8,29 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 import {
-   changeVisibleModal,
    setStateNumberCurrentTechnique,
    setBrandCurrentTechnique,
    setInventoryNumberCurrentTechnique,
    setFuelCurrentTechnique,
    changeTechniqueInfo
 } from "../../store/techniquesList/actions";
+
 import { useSelector, useDispatch } from "react-redux";
+import { openModal, closeModal } from "../../store/modals/actions"
 
 function ModalTechniquesEdit() {
 
    const dispatch = useDispatch();
 
    const currentTechnique = useSelector(state => state.techniquesListVault.currentTechnique);
-   const visibleModalEdit = useSelector(state => state.techniquesListVault.visibleModals.editing);
+   const visibleModalEdit = useSelector(state => state.modalsVault.visibleModals.visibleModalEditingTechniques);
 
    const handleClose = () => {
-      dispatch(changeVisibleModal("editing"))
+      dispatch(closeModal("visibleModalEditingTechniques"))
    };
 
    const handleConfirm = () => {
-      dispatch(changeVisibleModal("editing"))
+      dispatch(openModal("visibleModalEditingTechniques"))
       dispatch(changeTechniqueInfo(currentTechnique))
    };
 

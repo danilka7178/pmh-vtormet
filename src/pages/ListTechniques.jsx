@@ -4,7 +4,8 @@ import { DataGrid } from '@material-ui/data-grid';
 import ModalAddWorker from "../components/modals/ModalAddWorker";
 import ModalDialogTechniques from "../components/modals/ModalDialogTechniques";
 import { useDispatch, useSelector } from "react-redux";
-import { getTechniquesList, changeVisibleModal, setCurrentTechnique } from "../store/techniquesList/actions";
+import { getTechniquesList, setCurrentTechnique } from "../store/techniquesList/actions";
+import { openModal } from "../store/modals/actions";
 
 const columns = [
    { field: 'id', headerName: '№ п/п', width: 150 },
@@ -24,7 +25,7 @@ const columns = [
    },
 ];
 
-function ListTechniques({ handleClickButtonGoBack, openModalAddWorker }) {
+function ListTechniques({ handleClickButtonGoBack, handleOpenModal }) {
    const dispatch = useDispatch();
    const data = useSelector(state => state.techniquesListVault.techniquesList);
 
@@ -36,7 +37,7 @@ function ListTechniques({ handleClickButtonGoBack, openModalAddWorker }) {
 
    const handleClickRow = (data) => {
       dispatch(setCurrentTechnique(data.row))
-      dispatch(changeVisibleModal("actions"))
+      dispatch(openModal("visibleModalActionsTechniques"))
    }
 
    return (
@@ -52,7 +53,7 @@ function ListTechniques({ handleClickButtonGoBack, openModalAddWorker }) {
             <div className="list-workers__side list-techniques__side">
                <button
                   className="list-workers__btn list-techniques__btn"
-                  onClick={openModalAddWorker}
+                  onClick={() => handleOpenModal("visibleModalAddTechnique")}
                >
                   Добавить технику
                </button>

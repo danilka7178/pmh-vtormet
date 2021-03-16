@@ -35,7 +35,7 @@ const FormListWorker = ({ disabledButtonAddWorker, handleAdd,
    return (
       <div>
          <Dialog
-            open={visibleModalDoThingsWithWorker}
+            open={visibleModalDoThingsWithWorker ? visibleModalDoThingsWithWorker : false}
             onClose={handleClose}
             aria-labelledby="form-dialog-title"
          >

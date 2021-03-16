@@ -14,17 +14,17 @@ function HomePage() {
    }
 
    return (
-      <div>
-         <h3>Добро пожаловать на сайт компании ООО "ПМХ-ВТОРМЕТ"</h3>
-         <h4>Пожалуйста выберите интересующий вас раздел ниже:</h4>
-         <div className="button-menu">
+      <div className="home-page">
+         <h3 className="home-page__description">Добро пожаловать на сайт компании ООО "ПМХ-ВТОРМЕТ"</h3>
+         <h4 className="home-page__info">Пожалуйста выберите интересующий вас раздел ниже:</h4>
+         <div className="button-menu home-page__button">
             <Button
                variant="contained"
                color="primary"
                onClick={handleClickButtonListWorkers}>Список сотрудников ООО "ПМХ-ВТОРМЕТ"
             </Button>
          </div>
-         <div className="button-menu">
+         <div className="button-menu home-page__button">
             <Button
                variant="contained"
                color="primary"

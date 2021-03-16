@@ -6,7 +6,7 @@ import PageNotFound from "./pages/PageNotFound";
 
 import { useSelector, useDispatch } from "react-redux";
 import { setCurrentPage } from "./store/pagesList/actions";
-import { openModal } from "./store/workersList/actions";
+import { openModal } from "./store/modals/actions";
 
 
 function App() {
@@ -16,8 +16,8 @@ function App() {
   const handleClickButtonGoBack = () => {
     dispatch(setCurrentPage(""))
   }
-  const openModalAddWorker = () => {
-    dispatch(openModal("visibleModalAddWorker"));
+  const handleOpenModal = (modal) => {
+    dispatch(openModal(modal));
   }
 
   return (
@@ -25,10 +25,10 @@ function App() {
       {!currentPage ? <HomePage />
         : currentPage === "ListWorkers" ? <ListWorkers
           handleClickButtonGoBack={handleClickButtonGoBack}
-          openModalAddWorker={openModalAddWorker} />
+          handleOpenModal={handleOpenModal} />
           : currentPage === "ListTechniques" ? <ListTechniques
             handleClickButtonGoBack={handleClickButtonGoBack}
-            openModalAddWorker={openModalAddWorker} />
+            handleOpenModal={handleOpenModal} />
             : <PageNotFound />}
     </div>
   );

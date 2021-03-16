@@ -7,7 +7,7 @@ import { setData } from "../store/workersList/actions";
 
 import ModalAddWorker from "../components/modals/ModalAddWorker";
 
-function ListWorkers({ handleClickButtonGoBack, openModalAddWorker }) {
+function ListWorkers({ handleClickButtonGoBack, handleOpenModal }) {
 
    const data = useSelector(state => state.workersListVault.workersList);
    const [inputSearchWorkerValue, setInputSearchWorkerValue] = React.useState("");
@@ -83,7 +83,7 @@ function ListWorkers({ handleClickButtonGoBack, openModalAddWorker }) {
             <div className="list-workers__side">
                <button
                   className="list-workers__btn"
-                  onClick={openModalAddWorker}
+                  onClick={() => handleOpenModal("visibleModalAddWorker")}
                >
                   Добавить сотрудника
                </button>

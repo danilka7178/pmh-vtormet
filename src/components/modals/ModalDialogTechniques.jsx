@@ -11,7 +11,8 @@ import ModalTechniquesEdit from "./ModalTechniquesEdit";
 import axios from "axios";
 
 import { useSelector, useDispatch } from "react-redux";
-import { changeVisibleModal, setCurrentTechnique, removeOldTechniqueFromStore } from "../../store/techniquesList/actions";
+import { setCurrentTechnique, removeOldTechniqueFromStore } from "../../store/techniquesList/actions";
+import { openModal, closeModal } from "../../store/modals/actions";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
    return <Slide direction="up" ref={ref} {...props} />;
@@ -20,20 +21,20 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 function ModalDialogTechniques() {
    const currentTechnique = useSelector(state => state.techniquesListVault.currentTechnique);
-   const visibleModalActions = useSelector(state => state.techniquesListVault.visibleModals.actions);
+   const visibleModalActions = useSelector(state => state.modalsVault.visibleModals.visibleModalActionsTechniques);
    const dispatch = useDispatch();
 
    const handleClose = () => {
-      dispatch(changeVisibleModal("actions"))
+      dispatch(closeModal("visibleModalActionsTechniques"))
       dispatch(setCurrentTechnique({}))
    };
 
    const handleEdit = () => {
-      dispatch(changeVisibleModal("editing"))
+      dispatch(openModal("visibleModalEditingTechniques"))
    }
 
    const handleDelete = () => {
-      dispatch(changeVisibleModal("actions"))
+      dispatch(closeModal("visibleModalActionsTechniques"))
       const question = window.confirm(`Вы действительно хотите удалить авто с номером ${currentTechnique.stateNumber}?`)
       if (question) {
          dispatch(removeOldTechniqueFromStore(currentTechnique.id))

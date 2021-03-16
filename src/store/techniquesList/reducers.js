@@ -2,7 +2,6 @@ import produce from "immer";
 
 import {
    SET_TECHNIQUES_LIST,
-   CHANGE_VISIBLE_MODAL,
    SET_CURRENT_TECHNIQUE,
    SET_STATE_NUMBER_CURRENT_TECHNIQUE,
    SET_BRAND_CURRENT_TECHNIQUE,
@@ -13,10 +12,6 @@ import {
 } from "./actions";
 
 const initialState = {
-   visibleModals: {
-      actions: false,
-      editing: false
-   },
    currentTechnique: {
    },
 }
@@ -24,17 +19,6 @@ const initialState = {
 export const techniquesListReducer = produce((draftState, action) => {
    if (action.type === SET_TECHNIQUES_LIST) {
       draftState.techniquesList = action.payload
-   }
-   else if (action.type === CHANGE_VISIBLE_MODAL) {
-      if (action.payload === "actions") {
-         draftState.visibleModals = {
-            [action.payload]: !draftState.visibleModals.actions
-         }
-      } else if (action.payload === "editing") {
-         draftState.visibleModals = {
-            [action.payload]: !draftState.visibleModals.editing
-         }
-      }
    }
    else if (action.type === SET_CURRENT_TECHNIQUE) {
       draftState.currentTechnique = action.payload

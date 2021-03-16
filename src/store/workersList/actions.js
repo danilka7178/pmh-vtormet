@@ -1,8 +1,6 @@
 import axios from "axios";
 
 export const SET_DATA = "SET_DATA";
-export const OPEN_MODAL = "OPEN_MODAL";
-export const CLOSE_MODAL = "CLOSE_MODAL";
 export const SET_PERSONNEL_NUMBER = "SET_PERSONNEL_NUMBER";
 export const SET_LAST_NAME = "SET_LAST_NAME";
 export const SET_FIRST_NAME = "SET_FIRST_NAME";
@@ -18,16 +16,6 @@ export const PUT_OBJECT_IN_FORM = "PUT_OBJECT_IN_FORM";
 
 export const setData = (data) => ({
    type: SET_DATA,
-   payload: data,
-})
-
-export const openModal = (data) => ({
-   type: OPEN_MODAL,
-   payload: data,
-})
-
-export const closeModal = (data) => ({
-   type: CLOSE_MODAL,
    payload: data,
 })
 

@@ -1,7 +1,6 @@
 import axios from "axios";
 
 export const SET_TECHNIQUES_LIST = "SET_TECHNIQUES_LIST";
-export const CHANGE_VISIBLE_MODAL = "CHANGE_VISIBLE_MODAL";
 export const SET_CURRENT_TECHNIQUE = "SET_CURRENT_TECHNIQUE";
 export const SET_STATE_NUMBER_CURRENT_TECHNIQUE = "SET_STATE_NUMBER_CURRENT_TECHNIQUE";
 export const SET_BRAND_CURRENT_TECHNIQUE = "SET_BRAND_CURRENT_TECHNIQUE";
@@ -18,11 +17,6 @@ export const getTechniquesList = () => async (dispatch) => {
 
 export const setTechniquesList = (data) => ({
    type: SET_TECHNIQUES_LIST,
-   payload: data
-})
-
-export const changeVisibleModal = (data) => ({
-   type: CHANGE_VISIBLE_MODAL,
    payload: data
 })
 
