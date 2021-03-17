@@ -45,7 +45,7 @@ function ListTechniques({ handleClickButtonGoBack, handleOpenModal }) {
          <div className="list-techniques__container">
             <button
                className="go-home-page-button"
-               onClick={handleClickButtonGoBack}
+               onClick={() => { handleClickButtonGoBack("") }}
             >
                Назад
             </button>

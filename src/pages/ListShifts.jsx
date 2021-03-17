@@ -15,7 +15,7 @@ const ListShifts = ({ handleClickButtonGoBack }) => {
             <Button
                variant="contained"
                color="primary"
-               onClick={handleClickButtonGoBack}
+               onClick={() => { handleClickButtonGoBack("") }}
             >
                Назад
          </Button>

@@ -75,7 +75,7 @@ function ListWorkers({ handleClickButtonGoBack, handleOpenModal }) {
          <div className="list-workers">
             <button
                className="go-home-page-button"
-               onClick={handleClickButtonGoBack}
+               onClick={() => { handleClickButtonGoBack("") }}
             >
                Назад
             </button>
