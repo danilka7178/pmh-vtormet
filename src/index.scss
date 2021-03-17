@@ -321,3 +321,33 @@ td {
   &__summary-info {
   }
 }
+
+//? list-shifts ------------------------------------------------------------------------------
+
+.list-shifts {
+  text-align: center;
+
+  &__description {
+    font-size: 36px;
+    margin: 20px;
+  }
+
+  &__buttons {
+    margin: 0px 50px 20px 50px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__shifts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 10px;
+  }
+
+  &__shift {
+    flex: 0 1 33.3333%;
+    margin: 0 auto;
+  }
+}
