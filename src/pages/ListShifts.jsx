@@ -1,8 +1,17 @@
+import React from "react"
 import Button from '@material-ui/core/Button';
 import ShiftCard from "../components/ShiftCard";
-import shifts from "../shifts";
+import { getShifts } from "../store/shifts/actions";
+import { useSelector, useDispatch } from "react-redux";
 
 const ListShifts = ({ handleClickButtonGoBack }) => {
+   const dispatch = useDispatch()
+   const shifts = useSelector(state => state.shiftsVault.shiftsList)
+
+   React.useEffect(() => {
+      dispatch(getShifts())
+      // eslint-disable-next-line
+   }, [])
 
    const handleAddShift = () => {
       console.log(`Клик по кнопке "Добавить смену"`)

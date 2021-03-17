@@ -6,8 +6,9 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setCurrentPage } from "../store/pagesList/actions";
+import { setCurrentShift } from "../store/shifts/actions";
 
 const useStyles = makeStyles({
    root: {
@@ -26,13 +27,21 @@ const useStyles = makeStyles({
 function ShiftCard({ id, name, amount }) {
    const classes = useStyles();
    const dispatch = useDispatch();
+   const shifts = useSelector(state => state.shiftsVault.shiftsList)
 
    const handleDelete = () => {
       console.log("Логика удаления")
    }
 
-   const handleOpen = (page) => {
+   const handleOpen = async (page, e) => {
+      const currentShift = await shifts.find((obj) => {
+         return (
+            obj.id === e.target.id
+         )
+      })
+      dispatch(setCurrentShift(currentShift))
       dispatch(setCurrentPage(page))
+      // Диспатч отправки объекта выбранной смены
    }
 
    return (
@@ -57,10 +66,12 @@ function ShiftCard({ id, name, amount }) {
                >
                   Удалить
                   </Button>
-               <Button size="small"
+               <Button
+                  id={id}
+                  size="small"
                   variant="contained"
                   color="secondary"
-                  onClick={() => { handleOpen("ListShift") }}
+                  onClick={(e) => { handleOpen("ListShift", e) }}
                >
                   Открыть
                   </Button>

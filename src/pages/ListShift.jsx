@@ -1,6 +1,9 @@
 import Button from '@material-ui/core/Button';
+import { useSelector } from "react-redux";
 
 function ListShift({ handleClickButtonGoBack }) {
+   const currentShift = useSelector(state => state.shiftsVault.currentShift);
+   console.log(currentShift)
    return (
       <div className="list-shift">
          <h3 className="list-shifts__description">Я лист смены</h3>
