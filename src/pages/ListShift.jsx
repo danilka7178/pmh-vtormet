@@ -16,6 +16,10 @@ function ListShift({ handleClickButtonGoBack }) {
                Назад
          </Button>
          </div>
+         <div>
+            <h3>Выбранная смена: {currentShift.shiftName}</h3>
+
+         </div>
       </div>
    )
 }
