@@ -12,7 +12,8 @@ const initialState = {
       visibleModalActionsTechniques: false,
       visibleModalEditingTechniques: false,
       visibleModalAddTechnique: false,
-      visibleModalAddShift: false
+      visibleModalAddShift: false,
+      visibleModalAddList: false
    }
 };
 

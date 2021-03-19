@@ -11,7 +11,6 @@ import ModalAddShift from "../components/modals/ModalAddShift";
 const ListShifts = ({ handleClickButtonGoBack }) => {
    const dispatch = useDispatch()
    const shifts = useSelector(state => state.shiftsVault.shiftsList);
-   console.log(shifts)
 
    React.useEffect(() => {
       dispatch(getShifts())

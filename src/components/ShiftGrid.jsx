@@ -107,7 +107,7 @@ function ShiftGrid() {
                         onRowClick={(data) => handleClickRow(data)}
                      />
                   </div>)
-               : <h4 className="currently-shift-grid__not-find">В этой смене нет таких п/л, вы можете их добавить</h4>}
+               : <h4 className="currently-shift-grid__not-find">В этой смене нет п/л, вы можете их добавить</h4>}
          </div>
          <div className="shift-grid__currently currently-shift-grid">
             <h3 className="currently-shift-grid__desctiption">УПМ - день</h3>
@@ -124,7 +124,7 @@ function ShiftGrid() {
                         onRowClick={(data) => handleClickRow(data)}
                      />
                   </div>)
-               : <h4 className="currently-shift-grid__not-find">В этой смене нет таких п/л, вы можете их добавить</h4>}
+               : <h4 className="currently-shift-grid__not-find">В этой смене таких п/л, вы можете их добавить</h4>}
          </div>
          <div className="shift-grid__currently currently-shift-grid">
             <h3 className="currently-shift-grid__desctiption 
@@ -142,7 +142,7 @@ function ShiftGrid() {
                         onRowClick={(data) => handleClickRow(data)}
                      />
                   </div>)
-               : <h4 className="currently-shift-grid__not-find">В этой смене нет таких п/л, вы можете их добавить</h4>}
+               : <h4 className="currently-shift-grid__not-find">В этой смене нет п/л, вы можете их добавить</h4>}
          </div>
          <div className="shift-grid__currently currently-shift-grid">
             <h3 className="currently-shift-grid__desctiption">КУ - день</h3>
@@ -159,7 +159,7 @@ function ShiftGrid() {
                         onRowClick={(data) => handleClickRow(data)}
                      />
                   </div>)
-               : <h4 className="currently-shift-grid__not-find">В этой смене нет таких п/л, вы можете их добавить</h4>}
+               : <h4 className="currently-shift-grid__not-find">В этой смене нет п/л, вы можете их добавить</h4>}
          </div>
       </div>
    )

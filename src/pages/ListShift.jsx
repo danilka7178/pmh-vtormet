@@ -1,13 +1,16 @@
 import Button from '@material-ui/core/Button';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import ModalAddList from '../components/modals/ModalAddList';
+import { openModal } from "../store/modals/actions";
 
 import ShiftGrid from "../components/ShiftGrid";
 
 function ListShift({ handleClickButtonGoBack }) {
+   const dispatch = useDispatch()
    const currentShift = useSelector(state => state.shiftsVault.currentShift);
 
    const handleAddList = () => {
-      console.log("Логика добавления п/л")
+      dispatch(openModal("visibleModalAddList"))
    }
 
    const handlePrintList = () => {
@@ -34,7 +37,7 @@ function ListShift({ handleClickButtonGoBack }) {
                   onClick={handleAddList}
                >
                   Добавить п/л
-            </Button>
+               </Button>
             </div>
             <div className="list-shift__button-print">
                <Button
@@ -47,6 +50,7 @@ function ListShift({ handleClickButtonGoBack }) {
             </div>
          </div>
          <ShiftGrid />
+         <ModalAddList />
       </div>
    )
 }

@@ -30,8 +30,17 @@ function ShiftCard({ id, name, amount }) {
    const shifts = useSelector(state => state.shiftsVault.shiftsList)
 
    const handleDelete = (e) => {
-      console.log(e.currentTarget.id)
-      dispatch(deleteAndRemoveShift(e.currentTarget.id))
+      const shift = shifts.find((obj) => {
+         return (
+            obj.id === e.currentTarget.id
+         )
+      })
+      const question = window.prompt(`Вы действительно хотите удалить смену: "${shift.shiftName}".
+      Введите "Да" для удаления`)
+      if (question === "Да") {
+         dispatch(deleteAndRemoveShift(e.currentTarget.id))
+      }
+
    }
 
    const handleOpen = async (page, e) => {

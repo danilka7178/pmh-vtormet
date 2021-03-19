@@ -45,7 +45,7 @@ function ModalAddShift() {
    return (
       <div>
          <Dialog
-            open={visibleModalAddShift}
+            open={visibleModalAddShift ? visibleModalAddShift : false}
             onClose={() => { handleClose("visibleModalAddShift") }}
             aria-labelledby="form-dialog-title"
          >
