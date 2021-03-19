@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentPage } from "../store/pagesList/actions";
-import { setCurrentShift } from "../store/shifts/actions";
+import { setCurrentShift, deleteAndRemoveShift } from "../store/shifts/actions";
 
 const useStyles = makeStyles({
    root: {
@@ -29,8 +29,9 @@ function ShiftCard({ id, name, amount }) {
    const dispatch = useDispatch();
    const shifts = useSelector(state => state.shiftsVault.shiftsList)
 
-   const handleDelete = () => {
-      console.log("Логика удаления")
+   const handleDelete = (e) => {
+      console.log(e.currentTarget.id)
+      dispatch(deleteAndRemoveShift(e.currentTarget.id))
    }
 
    const handleOpen = async (page, e) => {
@@ -58,7 +59,9 @@ function ShiftCard({ id, name, amount }) {
                </Typography>
             </CardContent>
             <CardActions className={classes.buttons}>
-               <Button size="small"
+               <Button
+                  id={id}
+                  size="small"
                   variant="contained"
                   color="primary"
                   onClick={handleDelete}

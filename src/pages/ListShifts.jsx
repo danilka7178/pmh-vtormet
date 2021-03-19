@@ -4,9 +4,14 @@ import ShiftCard from "../components/ShiftCard";
 import { getShifts } from "../store/shifts/actions";
 import { useSelector, useDispatch } from "react-redux";
 
+import CircularIndeterminate from "../components/CircularIndeterminate";
+import { openModal } from "../store/modals/actions";
+import ModalAddShift from "../components/modals/ModalAddShift";
+
 const ListShifts = ({ handleClickButtonGoBack }) => {
    const dispatch = useDispatch()
-   const shifts = useSelector(state => state.shiftsVault.shiftsList)
+   const shifts = useSelector(state => state.shiftsVault.shiftsList);
+   console.log(shifts)
 
    React.useEffect(() => {
       dispatch(getShifts())
@@ -14,7 +19,7 @@ const ListShifts = ({ handleClickButtonGoBack }) => {
    }, [])
 
    const handleAddShift = () => {
-      console.log(`Клик по кнопке "Добавить смену"`)
+      dispatch(openModal("visibleModalAddShift"))
    }
 
    return (
@@ -45,8 +50,9 @@ const ListShifts = ({ handleClickButtonGoBack }) => {
                   amount={obj.shift.length}
                />
             ))
-               : <h4>Подгружаю смены</h4>}
+               : <CircularIndeterminate />}
          </div>
+         <ModalAddShift />
       </div>
    )
 }

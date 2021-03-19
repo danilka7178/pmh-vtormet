@@ -351,3 +351,47 @@ td {
     margin: 0 auto;
   }
 }
+
+//? list-shift ------------------------------------------------------------------------------
+
+.list-shift {
+  text-align: center;
+
+  &__description {
+    font-size: 36px;
+    line-height: 40px;
+  }
+
+  &__button-go-back {
+    text-align: left;
+    margin: 0px 0px 0px 30px;
+  }
+
+  &__buttons {
+    text-align: right;
+    margin: 0px 100px 20px 0px;
+  }
+
+  &__button-add-list {
+    margin: 0px 0px 20px 0px;
+  }
+  &__button-print {
+  }
+}
+
+.currently-shift-grid {
+  border: solid 1px black;
+  margin: 0px 20px 20px 20px;
+
+  &__desctiption {
+    margin: 10px auto;
+    width: 90%;
+    &--night {
+      background-color: rgb(199, 199, 199);
+    }
+  }
+
+  &__grid {
+    margin: 0px 0px 20px 0px;
+  }
+}
