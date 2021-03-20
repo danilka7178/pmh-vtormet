@@ -19,7 +19,7 @@ function ListShift({ handleClickButtonGoBack }) {
 
    return (
       <div className="list-shift">
-         <h3 className="list-shift__description">Выбранная смена: {currentShift.shiftName}, всего п/л: {currentShift.shift.length}</h3>
+         <h3 className="list-shift__description">Выбранная смена: {currentShift ? currentShift.shiftName : "ОШИБКА"}, всего п/л: {currentShift ? currentShift.shift ? currentShift.shift.length : "0" : "0"}</h3>
          <div className="list-shift__button-go-back">
             <Button
                variant="contained"

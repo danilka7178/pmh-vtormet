@@ -10,12 +10,12 @@ import ModalAddShift from "../components/modals/ModalAddShift";
 
 const ListShifts = ({ handleClickButtonGoBack }) => {
    const dispatch = useDispatch()
-   const shifts = useSelector(state => state.shiftsVault.shiftsList);
-
    React.useEffect(() => {
       dispatch(getShifts())
       // eslint-disable-next-line
    }, [])
+
+   const shifts = useSelector(state => state.shiftsVault.shiftsList);
 
    const handleAddShift = () => {
       dispatch(openModal("visibleModalAddShift"))
@@ -41,7 +41,7 @@ const ListShifts = ({ handleClickButtonGoBack }) => {
          </Button>
          </div>
          <div className="list-shifts__shifts">
-            {shifts ? shifts.map((obj) => (
+            {shifts.length ? shifts.map((obj) => (
                <ShiftCard
                   key={obj.id}
                   id={obj.id}

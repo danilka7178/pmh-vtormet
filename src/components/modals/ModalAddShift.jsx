@@ -42,6 +42,19 @@ function ModalAddShift() {
       setInputValue("")
    }
 
+   const buttonDisabled = () => {
+      let disabledSameValue = false
+      shifts.forEach((obj) => {
+         if (obj.shiftName === inputValue) {
+            return disabledSameValue = true
+         } else return false
+      })
+
+      if (!inputValue === "" || !disabledSameValue) {
+         return false
+      } else return true
+   }
+
    return (
       <div>
          <Dialog
@@ -70,7 +83,7 @@ function ModalAddShift() {
                <Button onClick={handleClose} color="primary">
                   Отменить
                </Button>
-               <Button onClick={handleAdd} color="secondary" variant="contained">
+               <Button disabled={buttonDisabled()} onClick={handleAdd} color="secondary" variant="contained">
                   Добавить
                </Button>
             </DialogActions>
