@@ -35,7 +35,7 @@ function ShiftCard({ id, name, amount }) {
             obj.id === e.currentTarget.id
          )
       })
-      const question = window.prompt(`Вы действительно хотите удалить смену: "${shift.shiftName}".
+      const question = window.prompt(`Вы действительно хотите удалить смену: "${shift ? shift.shiftName : "ОШИБКА"}".
       Введите "Да" для удаления`)
       if (question === "Да") {
          dispatch(deleteAndRemoveShift(e.currentTarget.id))

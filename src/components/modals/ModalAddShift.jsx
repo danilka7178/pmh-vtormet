@@ -33,7 +33,7 @@ function ModalAddShift() {
 
    const handleAdd = () => {
       const newShift = {
-         id: shifts.length + 1,
+         id: shifts.length ? +shifts[shifts.length - 1].id + 1 : 1,
          shiftName: inputValue,
          shift: []
       }

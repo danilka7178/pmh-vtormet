@@ -1,7 +1,11 @@
 import { DataGrid } from "@material-ui/data-grid";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { openModal } from "../store/modals/actions";
+import { setCurrentList } from "../store/shifts/actions"
+import ModalDialogList from "../components/modals/ModalDialogList"
 
 function ShiftGrid() {
+   const dispatch = useDispatch();
    const columns = [
       { field: 'id', headerName: '№ п/п', width: 70 },
       { field: 'place', headerName: 'Участок', width: 100 },
@@ -86,7 +90,8 @@ function ShiftGrid() {
    })
 
    const handleClickRow = (data) => {
-      console.log(data.row)
+      dispatch(setCurrentList(data.row))
+      dispatch(openModal("visibleModalActionsList"))
    }
 
    return (
@@ -161,6 +166,7 @@ function ShiftGrid() {
                   </div>)
                : <h4 className="currently-shift-grid__not-find">В этой смене нет п/л, вы можете их добавить</h4>}
          </div>
+         <ModalDialogList />
       </div>
    )
 }

@@ -37,7 +37,7 @@ const FormList = ({ visibleModal, titleForm, valuePlot,
       <div className="add-list">
          <Dialog
             className="add-list__modal"
-            open={visibleModal ? visibleModal() : false}
+            open={visibleModal() ? visibleModal() : false}
             onClose={() => { handleClose("visibleModalAddList") }}
             aria-labelledby="form-dialog-title"
          >

@@ -72,7 +72,7 @@ function useFormList({ isEdit } = deaultObj) {
 
    const handleAdd = () => {
       let newList = {
-         id: shift.length + 1,
+         id: +shift.length + 1,
          place: valuePlot,
          timeStart: timeStart.replace(":", "."),
          timeEnd: timeEnd.replace(":", "."),

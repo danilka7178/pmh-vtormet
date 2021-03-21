@@ -5,6 +5,8 @@ export const SET_CURRENT_SHIFT = "SET_CURRENT_SHIFT";
 export const ADD_SHIFT = "ADD_SHIFT";
 export const REMOVE_SHIFT = "REMOVE_SHIFT";
 export const ADD_LIST = "ADD_LIST";
+export const SET_CURRENT_LIST = "SET_CURRENT_LIST";
+export const DELETE_LIST = "DELETE_LIST";
 
 export const getShifts = () => async (dispatch) => {
    const { data } = await axios.get("https://6024f2ad36244d001797b2c7.mockapi.io/Shifts")
@@ -50,5 +52,15 @@ export const AddAndPushList = (data, newShift) => async (dispatch) => {
 export const addList = (data) => ({
    type: ADD_LIST,
    payload: data
+})
+
+export const setCurrentList = (data) => ({
+   type: SET_CURRENT_LIST,
+   payload: data
+})
+
+export const deleteList = (id) => ({
+   type: DELETE_LIST,
+   payload: id
 })
 
