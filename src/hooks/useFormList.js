@@ -12,6 +12,7 @@ const deaultObj = {
 function useFormList({ isEdit } = deaultObj) {
    const dispatch = useDispatch();
    const visibleModalAddList = useSelector(state => state.modalsVault.visibleModals.visibleModalAddList);
+   const visibleModalEditList = useSelector(state => state.modalsVault.visibleModals.visibleModalEditList);
    const shift = useSelector(state => state.shiftsVault.currentShift.shift);
    const currentShift = useSelector(state => state.shiftsVault.currentShift);
    const workersList = useSelector(state => state.workersListVault.workersList);
@@ -148,8 +149,7 @@ function useFormList({ isEdit } = deaultObj) {
       if (!isEdit) {
          return visibleModalAddList
       } else {
-         return null
-         // return visibleModalEditList
+         return visibleModalEditList
       }
    }
 

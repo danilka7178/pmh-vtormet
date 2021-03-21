@@ -1,21 +1,20 @@
 import React from 'react';
 import useFormList from '../../hooks/useFormList';
-
 import FormList from "../forms/FormList"
 
-const ModalAddList = () => {
+const ModalEditList = () => {
    const {
       visibleModal, sortedWorkersList, sortedTechniquesList,
       handleClose, handleAdd, valuePlot, handleChangeRadioPlot,
       dateValue, handleChangeDate, timeStart, handleChangeTimeStart,
       timeEnd, handleChangeTimeEnd, selectedName, selectedCar,
       handleChangeSelected, disabledButton
-   } = useFormList();
+   } = useFormList({ isEdit: true });
 
    return (
       <FormList
          visibleModal={visibleModal}
-         titleForm={"Добавление"}
+         titleForm={"Редактирование"}
          valuePlot={valuePlot}
          handleChangeRadioPlot={handleChangeRadioPlot}
          dateValue={dateValue}
@@ -32,9 +31,9 @@ const ModalAddList = () => {
          handleAdd={handleAdd}
          handleClose={handleClose}
          disabledButton={disabledButton}
-         buttonText={"Добавить"}
+         buttonText={"Редактировать"}
       />
    )
 }
 
-export default ModalAddList
+export default ModalEditList

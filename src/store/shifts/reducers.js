@@ -7,7 +7,8 @@ import {
    REMOVE_SHIFT,
    ADD_LIST,
    SET_CURRENT_LIST,
-   DELETE_LIST
+   DELETE_LIST,
+   OBJ_TO_EDIT_LIST
 } from "./actions";
 
 const initialState = {
@@ -34,5 +35,7 @@ export const shiftsReducer = produce((draftState, action) => {
       draftState.currentList = action.payload
    } else if (action.type === DELETE_LIST) {
       draftState.currentShift.shift = draftState.currentShift.shift.filter(obj => +obj.id !== +action.payload)
+   } else if (action.type === OBJ_TO_EDIT_LIST) {
+      draftState.objToEditList = action.payload
    }
 }, initialState)

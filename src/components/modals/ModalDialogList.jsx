@@ -7,10 +7,12 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 
+import ModalEditList from "../modals/ModalEditList"
+
 import { useSelector, useDispatch } from "react-redux";
 import {
    setCurrentList, deleteList,
-   deleteAndRemoveShift, postAndAddShift
+   deleteAndRemoveShift, postAndAddShift, objToEditList
 } from "../../store/shifts/actions";
 import { openModal, closeModal } from "../../store/modals/actions";
 
@@ -30,6 +32,7 @@ const ModalDialogList = () => {
    };
 
    const handleEdit = () => {
+      dispatch(objToEditList(currentList))
       dispatch(openModal("visibleModalEditList"))
    }
 
@@ -87,7 +90,7 @@ const ModalDialogList = () => {
                </Button>
             </DialogActions>
          </Dialog>
-         {/* <ModalListEdit /> */}
+         <ModalEditList />
       </div>
    )
 }
