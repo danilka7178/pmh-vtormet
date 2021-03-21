@@ -13,14 +13,15 @@ import ButtonSort from "./ButtonSort";
 
 const columns = [
    { field: 'personnelNumber', headerName: 'Табельный №', width: 170 },
-   { field: 'lastName', headerName: 'Фамилия', width: 130 },
-   { field: 'firstName', headerName: 'Имя', width: 130 },
-   { field: 'middleName', headerName: 'Отчество', width: 130 },
-   { field: 'birthdayDate', headerName: 'Дата рождения', type: 'date', width: 210, },
-   { field: 'subDivision', headerName: 'Подразделение', width: 250 },
+   { field: 'lastName', headerName: 'Фамилия', width: 80 },
+   { field: 'firstName', headerName: 'Имя', width: 80 },
+   { field: 'middleName', headerName: 'Отчество', width: 80 },
+   { field: 'birthdayDate', headerName: 'Дата рождения', type: 'date', width: 150, },
+   { field: 'subDivision', headerName: 'Подразделение', width: 200 },
    { field: 'position', headerName: 'Должность', width: 150 },
    { field: 'employmentDate', headerName: `Дата приема на работу`, type: 'date', width: 210, },
-   { field: 'changeOrDelete', headerName: 'Изменение', width: 50, },
+   { field: 'driverLicence', headerName: `ВУ`, width: 150, },
+   { field: 'changeOrDelete', headerName: 'Изменение', width: 140, },
 ];
 
 
@@ -74,13 +75,14 @@ function WorkersTable() {
                {data.map(({ id = data.length, firstName,
                   lastName, middleName,
                   birthdayDate, personnelNumber,
-                  division, employmentDate }) => {
+                  division, employmentDate, driverLicence }) => {
                   return (
                      <tr key={`${id}_${firstName}`}><td>{personnelNumber}</td><td>{lastName}</td>
                         <td>{firstName}</td><td>{middleName}</td>
                         <td>{birthdayDate}</td><td>{division.subDivision}</td>
                         <td>{division.position}</td>
                         <td>{employmentDate}</td>
+                        <td>{driverLicence}</td>
                         <td>
                            <button
                               onClick={clickChangeWorker}

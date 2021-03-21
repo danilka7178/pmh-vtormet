@@ -14,7 +14,7 @@ const FormListWorker = ({ disabledButtonAddWorker, handleAdd,
 
    const { personnelNumber, lastName,
       firstName, middleName, birthdayDate,
-      division, employmentDate } = useSelector(state => state.workersListVault.objectToEdit);
+      division, employmentDate, driverLicence } = useSelector(state => state.workersListVault.objectToEdit);
 
    const transformationDate = (date) => {
       if (date) {
@@ -119,6 +119,16 @@ const FormListWorker = ({ disabledButtonAddWorker, handleAdd,
                   type="date"
                   fullWidth
                   defaultValue={employmentDate ? transformationDate(employmentDate) : ""}
+                  onChange={changeInputValue}
+               />
+               <TextField
+                  InputLabelProps={{ shrink: true }}
+                  margin="dense"
+                  id="driverLicence"
+                  label="Водительское удостоверение"
+                  type="text"
+                  fullWidth
+                  defaultValue={driverLicence ? driverLicence : ""}
                   onChange={changeInputValue}
                />
             </DialogContent>

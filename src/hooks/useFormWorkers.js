@@ -8,7 +8,8 @@ import {
    setLastName, setFirstName,
    setMiddleName, setBirthdayDate,
    setDivisionPosition, setDivisionSubDivision,
-   setEmploymentDate, resetFormAddWorker,
+   setEmploymentDate, setDriverLicence,
+   resetFormAddWorker,
    putNewWorkerToStore, postNewWorkerToServer,
    deleteWorkerFromStore, deleteWorkerFromServer
 } from "../store/workersList/actions";
@@ -60,6 +61,8 @@ function useFormWorkers({ isEdit } = deaultObj) {
             return dispatch(setDivisionSubDivision(e.target.value));
          case "employmentDate":
             return dispatch(setEmploymentDate(moment(e.target.value).format('L')));
+         case "driverLicence":
+            return dispatch(setDriverLicence(e.target.value));
 
          default:
             break;
@@ -92,7 +95,8 @@ function useFormWorkers({ isEdit } = deaultObj) {
             newWorkerInfo.division &&
             newWorkerInfo.division.position &&
             newWorkerInfo.division.subDivision &&
-            newWorkerInfo.employmentDate
+            newWorkerInfo.employmentDate &&
+            newWorkerInfo.driverLicence
       } else {
          return true
       }

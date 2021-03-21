@@ -48,6 +48,7 @@ function ModalAddList() {
    const [selectedCar, setSelectedCar] = React.useState('');
 
    const [selectedUniqNumber, setSelectedUniqNumber] = React.useState('');
+   const [selectedDriverLicence, setSelectedDriverLicence] = React.useState('');
    const [selectedCarUniqNumber, setSelectedCarUniqNumber] = React.useState('');
 
    React.useEffect(() => {
@@ -108,7 +109,7 @@ function ModalAddList() {
          driver: {
             name: selectedName,
             uniqNumber: selectedUniqNumber,
-            driverLicence: "driverLicence",
+            driverLicence: selectedDriverLicence,
          }
       };
       let newShift = {
@@ -143,6 +144,7 @@ function ModalAddList() {
             let objName = obj.lastName + " " + obj.firstName + " " + obj.middleName;
             if (objName === e.target.value) {
                setSelectedUniqNumber(obj.personnelNumber)
+               setSelectedDriverLicence(obj.driverLicence)
             }
          })
       } else if (select === "car") {

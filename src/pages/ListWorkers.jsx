@@ -30,7 +30,8 @@ function ListWorkers({ handleClickButtonGoBack, handleOpenModal }) {
                personnelNumber,
                employmentDate,
                birthdayDate,
-               division }) => {
+               division,
+               driverLicence }) => {
                return (
                   firstName.toLocaleLowerCase().includes(inputSearchWorkerValue.toLocaleLowerCase()) ||
                   lastName.toLocaleLowerCase().includes(inputSearchWorkerValue.toLocaleLowerCase()) ||
@@ -39,7 +40,8 @@ function ListWorkers({ handleClickButtonGoBack, handleOpenModal }) {
                   employmentDate.toString().toLocaleLowerCase().includes(inputSearchWorkerValue.toString().toLocaleLowerCase()) ||
                   birthdayDate.toString().toLocaleLowerCase().includes(inputSearchWorkerValue.toString().toLocaleLowerCase()) ||
                   division.position.toLocaleLowerCase().includes(inputSearchWorkerValue.toLocaleLowerCase()) ||
-                  division.subDivision.toLocaleLowerCase().includes(inputSearchWorkerValue.toLocaleLowerCase())
+                  division.subDivision.toLocaleLowerCase().includes(inputSearchWorkerValue.toLocaleLowerCase()) ||
+                  driverLicence.toString().toLocaleLowerCase().includes(inputSearchWorkerValue.toString().toLocaleLowerCase())
                )
             })
             dispatch(setData(filteredData));
@@ -54,7 +56,8 @@ function ListWorkers({ handleClickButtonGoBack, handleOpenModal }) {
             personnelNumber,
             employmentDate,
             birthdayDate,
-            division }) => {
+            division,
+            driverLicence }) => {
             return (
                firstName.toLocaleLowerCase().includes(inputSearchWorkerValue.toLocaleLowerCase()) ||
                lastName.toLocaleLowerCase().includes(inputSearchWorkerValue.toLocaleLowerCase()) ||
@@ -63,7 +66,8 @@ function ListWorkers({ handleClickButtonGoBack, handleOpenModal }) {
                employmentDate.toString().toLocaleLowerCase().includes(inputSearchWorkerValue.toString().toLocaleLowerCase()) ||
                birthdayDate.toString().toLocaleLowerCase().includes(inputSearchWorkerValue.toString().toLocaleLowerCase()) ||
                division.position.toLocaleLowerCase().includes(inputSearchWorkerValue.toLocaleLowerCase()) ||
-               division.subDivision.toLocaleLowerCase().includes(inputSearchWorkerValue.toLocaleLowerCase())
+               division.subDivision.toLocaleLowerCase().includes(inputSearchWorkerValue.toLocaleLowerCase()) ||
+               driverLicence.toString().toLocaleLowerCase().includes(inputSearchWorkerValue.toString().toLocaleLowerCase())
             )
          })
          dispatch(setData(filteredData));

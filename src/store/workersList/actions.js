@@ -9,6 +9,7 @@ export const SET_BIRTHDAY_DATE = "SET_BIRTHDAY_DATE";
 export const SET_DIVISION_POSITION = "SET_DIVISION_POSITION";
 export const SET_DIVISION_SUBDIVISION = "SET_DIVISION_SUBDIVISION";
 export const SET_EMPLOYMENT_DATE = "SET_EMPLOYMENT_DATE";
+export const SET_DRIVER_LICENCE = "SET_DRIVER_LICENCE";
 export const RESET_FORM = "RESET_FORM";
 export const NEW_WORKER_TO_STORE = "NEW_WORKER_TO_STORE";
 export const DELETE_WORKER_FROM_STORE = "DELETE_WORKER_FROM_STORE";
@@ -56,6 +57,11 @@ export const setDivisionSubDivision = (data) => ({
 
 export const setEmploymentDate = (data) => ({
    type: SET_EMPLOYMENT_DATE,
+   payload: data,
+})
+
+export const setDriverLicence = (data) => ({
+   type: SET_DRIVER_LICENCE,
    payload: data,
 })
 

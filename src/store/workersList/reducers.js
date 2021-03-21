@@ -3,9 +3,9 @@ import {
    SET_LAST_NAME, SET_FIRST_NAME,
    SET_MIDDLE_NAME, SET_BIRTHDAY_DATE,
    SET_DIVISION_POSITION, SET_DIVISION_SUBDIVISION,
-   SET_EMPLOYMENT_DATE, RESET_FORM,
-   NEW_WORKER_TO_STORE, DELETE_WORKER_FROM_STORE,
-   PUT_OBJECT_IN_FORM
+   SET_EMPLOYMENT_DATE, SET_DRIVER_LICENCE,
+   RESET_FORM, NEW_WORKER_TO_STORE,
+   DELETE_WORKER_FROM_STORE, PUT_OBJECT_IN_FORM
 } from "./actions";
 
 const initialState = {
@@ -89,6 +89,14 @@ export const workersListReducer = (state = initialState, action) => {
             newWorkerInfo: {
                ...state.newWorkerInfo,
                employmentDate: action.payload,
+            }
+         })
+      case SET_DRIVER_LICENCE:
+         return ({
+            ...state,
+            newWorkerInfo: {
+               ...state.newWorkerInfo,
+               driverLicence: action.payload,
             }
          })
       case RESET_FORM:
