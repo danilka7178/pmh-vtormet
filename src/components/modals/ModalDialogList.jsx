@@ -12,7 +12,7 @@ import ModalEditList from "../modals/ModalEditList"
 import { useSelector, useDispatch } from "react-redux";
 import {
    setCurrentList, deleteList,
-   deleteAndRemoveShift, postAndAddShift, objToEditList
+   deleteAndRemoveShift, postAndAddShift
 } from "../../store/shifts/actions";
 import { openModal, closeModal } from "../../store/modals/actions";
 
@@ -32,7 +32,6 @@ const ModalDialogList = () => {
    };
 
    const handleEdit = () => {
-      dispatch(objToEditList(currentList))
       dispatch(openModal("visibleModalEditList"))
    }
 

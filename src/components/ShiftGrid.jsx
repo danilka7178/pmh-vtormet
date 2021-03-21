@@ -8,6 +8,7 @@ function ShiftGrid() {
    const dispatch = useDispatch();
    const columns = [
       { field: 'id', headerName: '№ п/п', width: 70 },
+      { field: 'date', headerName: 'Дата', width: 150, },
       { field: 'place', headerName: 'Участок', width: 100 },
       { field: 'timeStart', headerName: 'Начало работы', width: 100 },
       { field: 'timeEnd', headerName: 'Конец работы', width: 100 },
@@ -25,65 +26,46 @@ function ShiftGrid() {
    const kuNight = [];
    const kuDay = [];
 
+   const transformationDate = (date) => {
+      if (date) {
+         const someTryMassive = [];
+         const newMassive = date.replace(/-/g, ".").split("");
+
+         someTryMassive.push(newMassive[8], newMassive[9], newMassive[7],
+            newMassive[5], newMassive[6],
+            newMassive[4], newMassive[0], newMassive[1],
+            newMassive[2], newMassive[3])
+
+         return (
+            someTryMassive.join("")
+         )
+      }
+   }
+
    shift.forEach((obj) => {
+      const newObject = {
+         id: obj.id,
+         date: transformationDate(obj.date),
+         place: obj.place,
+         timeStart: obj.timeStart,
+         timeEnd: obj.timeEnd,
+         carName: obj.car.name,
+         carUniqNumber: obj.car.carUniqNumber,
+         carStateNumber: obj.car.stateNumber,
+         driverName: obj.driver.name,
+         driverUniqNumber: obj.driver.uniqNumber,
+         driverLicence: obj.driver.driverLicence,
+      }
       if (obj.place === "УПМ") {
          if (obj.timeStart === "20.00") {
-            const newObject = {
-               id: obj.id,
-               place: obj.place,
-               timeStart: obj.timeStart,
-               timeEnd: obj.timeEnd,
-               carName: obj.car.name,
-               carUniqNumber: obj.car.carUniqNumber,
-               carStateNumber: obj.car.stateNumber,
-               driverName: obj.driver.name,
-               driverUniqNumber: obj.driver.uniqNumber,
-               driverLicence: obj.driver.driverLicence,
-            }
             upmNight.push(newObject)
          } else {
-            const newObject = {
-               id: obj.id,
-               place: obj.place,
-               timeStart: obj.timeStart,
-               timeEnd: obj.timeEnd,
-               carName: obj.car.name,
-               carUniqNumber: obj.car.carUniqNumber,
-               carStateNumber: obj.car.stateNumber,
-               driverName: obj.driver.name,
-               driverUniqNumber: obj.driver.uniqNumber,
-               driverLicence: obj.driver.driverLicence,
-            }
             upmDay.push(newObject)
          }
       } else if (obj.place === "КУ") {
          if (obj.timeStart === "20.00") {
-            const newObject = {
-               id: obj.id,
-               place: obj.place,
-               timeStart: obj.timeStart,
-               timeEnd: obj.timeEnd,
-               carName: obj.car.name,
-               carUniqNumber: obj.car.carUniqNumber,
-               carStateNumber: obj.car.stateNumber,
-               driverName: obj.driver.name,
-               driverUniqNumber: obj.driver.uniqNumber,
-               driverLicence: obj.driver.driverLicence,
-            }
             kuNight.push(newObject)
          } else {
-            const newObject = {
-               id: obj.id,
-               place: obj.place,
-               timeStart: obj.timeStart,
-               timeEnd: obj.timeEnd,
-               carName: obj.car.name,
-               carUniqNumber: obj.car.carUniqNumber,
-               carStateNumber: obj.car.stateNumber,
-               driverName: obj.driver.name,
-               driverUniqNumber: obj.driver.uniqNumber,
-               driverLicence: obj.driver.driverLicence,
-            }
             kuDay.push(newObject)
          }
       }

@@ -11,6 +11,8 @@ const deaultObj = {
 
 function useFormList({ isEdit } = deaultObj) {
    const dispatch = useDispatch();
+
+   const currentList = useSelector(state => state.shiftsVault.currentList);
    const visibleModalAddList = useSelector(state => state.modalsVault.visibleModals.visibleModalAddList);
    const visibleModalEditList = useSelector(state => state.modalsVault.visibleModals.visibleModalEditList);
    const shift = useSelector(state => state.shiftsVault.currentShift.shift);
@@ -18,7 +20,7 @@ function useFormList({ isEdit } = deaultObj) {
    const workersList = useSelector(state => state.workersListVault.workersList);
    const techniquesList = useSelector(state => state.techniquesListVault.techniquesList)
 
-   const [valuePlot, setValuePlot] = React.useState('');
+   const [valuePlot, setValuePlot] = React.useState("");
    const [dateValue, setDateValue] = React.useState(new Date().toISOString().slice(0, 10));
    const [timeStart, setTimeStart] = React.useState('08:00');
    const [timeEnd, setTimeEnd] = React.useState('20:00');
@@ -74,6 +76,7 @@ function useFormList({ isEdit } = deaultObj) {
    const handleAdd = () => {
       let newList = {
          id: +shift.length + 1,
+         date: dateValue,
          place: valuePlot,
          timeStart: timeStart.replace(":", "."),
          timeEnd: timeEnd.replace(":", "."),

@@ -15,7 +15,6 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import { makeStyles } from '@material-ui/core/styles';
-import { useSelector } from "react-redux"
 
 const useStyles = makeStyles((theme) => ({
    formControl: {
@@ -33,10 +32,7 @@ const FormList = ({ visibleModal, titleForm, valuePlot,
    sortedWorkersList, selectedCar, sortedTechniquesList,
    handleAdd, handleClose, disabledButton, buttonText }) => {
 
-   const objToEditList = useSelector(state => state.shiftsVault.objToEditList);
    const classes = useStyles();
-   console.log(objToEditList)
-
    return (
       <div className="add-list">
          <Dialog
@@ -86,7 +82,7 @@ const FormList = ({ visibleModal, titleForm, valuePlot,
                         inputProps={{
                            step: 600,
                         }}
-                        value={objToEditList ? objToEditList.timeStart : timeStart}
+                        value={timeStart}
                         onChange={handleChangeTimeStart}
                      />
                   </div>
