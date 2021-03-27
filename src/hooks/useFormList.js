@@ -12,7 +12,7 @@ const deaultObj = {
 function useFormList({ isEdit } = deaultObj) {
    const dispatch = useDispatch();
 
-   const currentList = useSelector(state => state.shiftsVault.currentList);
+   // const currentList = useSelector(state => state.shiftsVault.currentList);
    const visibleModalAddList = useSelector(state => state.modalsVault.visibleModals.visibleModalAddList);
    const visibleModalEditList = useSelector(state => state.modalsVault.visibleModals.visibleModalEditList);
    const shift = useSelector(state => state.shiftsVault.currentShift.shift);
