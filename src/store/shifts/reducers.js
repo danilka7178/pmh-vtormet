@@ -16,6 +16,21 @@ const initialState = {
       shift: [],
    },
    currentList: {
+      id: "",
+      date: new Date().toISOString().slice(0, 10),
+      place: "",
+      timeStart: "08:00",
+      timeEnd: "20:00",
+      car: {
+         name: "",
+         carUniqNumber: "",
+         stateNumber: "",
+      },
+      driver: {
+         name: "",
+         uniqNumber: "",
+         driverLicence: "",
+      }
    },
 }
 

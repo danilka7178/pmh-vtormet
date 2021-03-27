@@ -35,12 +35,13 @@ function ShiftCard({ id, name, amount }) {
             obj.id === e.currentTarget.id
          )
       })
-      const question = window.prompt(`Вы действительно хотите удалить смену: "${shift ? shift.shiftName : "ОШИБКА"}".
-      Введите "Да" для удаления`)
-      if (question === "Да") {
+      const question = window.prompt(`Вы действительно хотите удалить смену: "${shift ? shift.shiftName : ""}".
+      Введите "${shift ? shift.shiftName : ""}" для удаления`)
+      if (question === `${shift ? shift.shiftName : ""}`) {
          dispatch(deleteAndRemoveShift(e.currentTarget.id))
+      } else {
+         window.alert("Хорошо, не удаляем")
       }
-
    }
 
    const handleOpen = async (page, e) => {
