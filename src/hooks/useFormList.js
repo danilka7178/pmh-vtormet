@@ -12,23 +12,27 @@ const deaultObj = {
 function useFormList({ isEdit } = deaultObj) {
    const dispatch = useDispatch();
 
-   // const currentList = useSelector(state => state.shiftsVault.currentList);
+   const currentList = useSelector(state => state.shiftsVault.currentList);
    const visibleModalAddList = useSelector(state => state.modalsVault.visibleModals.visibleModalAddList);
    const visibleModalEditList = useSelector(state => state.modalsVault.visibleModals.visibleModalEditList);
    const shift = useSelector(state => state.shiftsVault.currentShift.shift);
    const currentShift = useSelector(state => state.shiftsVault.currentShift);
    const workersList = useSelector(state => state.workersListVault.workersList);
    const techniquesList = useSelector(state => state.techniquesListVault.techniquesList)
-
-   const [valuePlot, setValuePlot] = React.useState("");
+   console.log(currentList)
+   //! --currentList
    const [dateValue, setDateValue] = React.useState(new Date().toISOString().slice(0, 10));
+   const [valuePlot, setValuePlot] = React.useState("");
    const [timeStart, setTimeStart] = React.useState('08:00');
    const [timeEnd, setTimeEnd] = React.useState('20:00');
-   const [selectedName, setSelectedName] = React.useState('');
-   const [selectedCar, setSelectedCar] = React.useState('');
 
+   //! --driver
+   const [selectedName, setSelectedName] = React.useState('');
    const [selectedUniqNumber, setSelectedUniqNumber] = React.useState('');
    const [selectedDriverLicence, setSelectedDriverLicence] = React.useState('');
+
+   //! --car
+   const [selectedCar, setSelectedCar] = React.useState('');
    const [selectedCarUniqNumber, setSelectedCarUniqNumber] = React.useState('');
 
    React.useEffect(() => {
@@ -102,6 +106,7 @@ function useFormList({ isEdit } = deaultObj) {
 
    const handleChangeRadioPlot = (e) => {
       setValuePlot(e.target.value)
+      //? -- Логика отправления диспатча на изменение currentList.place
    }
 
    const handleChangeDate = (e) => {
