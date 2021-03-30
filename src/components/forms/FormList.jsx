@@ -15,6 +15,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import { makeStyles } from '@material-ui/core/styles';
+import { useSelector } from "react-redux"
 
 const useStyles = makeStyles((theme) => ({
    formControl: {
@@ -25,13 +26,15 @@ const useStyles = makeStyles((theme) => ({
    }
 }));
 
-const FormList = ({ visibleModal, titleForm, valuePlot,
-   handleChangeRadioPlot, dateValue, handleChangeDate,
-   timeStart, handleChangeTimeStart, timeEnd,
-   handleChangeTimeEnd, selectedName, handleChangeSelected,
-   sortedWorkersList, selectedCar, sortedTechniquesList,
-   handleAdd, handleClose, disabledButton, buttonText }) => {
+const FormList = ({ visibleModal, titleForm,
+   handleChangeRadioPlot, handleChangeDate,
+   handleChangeTimeStart, handleChangeTimeEnd,
+   handleChangeSelected, sortedWorkersList,
+   sortedTechniquesList, handleAdd, handleClose,
+   disabledButton, buttonText }) => {
 
+   const currentList = useSelector(state => state.shiftsVault.currentList);
+   console.log(currentList)
    const classes = useStyles();
    return (
       <div className="add-list">
@@ -54,7 +57,7 @@ const FormList = ({ visibleModal, titleForm, valuePlot,
                <FormControl component="fieldset" className={classes.formControl}>
                   <FormLabel component="legend" className={classes.formLabelPlot}>Участок</FormLabel>
                   <div className="add-list__block">
-                     <RadioGroup aria-label="Участок" name="plot" value={valuePlot} onChange={handleChangeRadioPlot}>
+                     <RadioGroup aria-label="Участок" name="plot" value={currentList.place} onChange={handleChangeRadioPlot}>
                         <FormControlLabel value="УПМ" control={<Radio />} label="УПМ" />
                         <FormControlLabel value="КУ" control={<Radio />} label="КУ" />
                      </RadioGroup>
@@ -67,7 +70,7 @@ const FormList = ({ visibleModal, titleForm, valuePlot,
                         InputLabelProps={{
                            shrink: true,
                         }}
-                        value={dateValue}
+                        value={currentList.date}
                         onChange={handleChangeDate}
                      />
                   </div>
@@ -82,7 +85,7 @@ const FormList = ({ visibleModal, titleForm, valuePlot,
                         inputProps={{
                            step: 600,
                         }}
-                        value={timeStart}
+                        value={currentList.timeStart}
                         onChange={handleChangeTimeStart}
                      />
                   </div>
@@ -97,7 +100,7 @@ const FormList = ({ visibleModal, titleForm, valuePlot,
                         inputProps={{
                            step: 600,
                         }}
-                        value={timeEnd}
+                        value={currentList.timeEnd}
                         onChange={handleChangeTimeEnd}
                      />
                   </div>
@@ -108,7 +111,7 @@ const FormList = ({ visibleModal, titleForm, valuePlot,
                      <Select
                         labelId="selectedNameLabel"
                         id="selectedName"
-                        value={selectedName}
+                        value={currentList.driver.name}
                         onChange={(e) => handleChangeSelected("name", e)}
                      >
                         {sortedWorkersList.map(obj => {
@@ -129,7 +132,7 @@ const FormList = ({ visibleModal, titleForm, valuePlot,
                      <Select
                         labelId="selectedCarLabel"
                         id="selectedCar"
-                        value={selectedCar}
+                        value={currentList.car.name}
                         onChange={(e) => handleChangeSelected("car", e)}
                      >
                         {sortedTechniquesList.map(obj => {

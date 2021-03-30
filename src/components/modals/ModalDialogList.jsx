@@ -26,9 +26,27 @@ const ModalDialogList = () => {
    const visibleModalActions = useSelector(state => state.modalsVault.visibleModals.visibleModalActionsList);
    const dispatch = useDispatch();
 
+   const defaultCurrentList = {
+      id: "",
+      date: new Date().toISOString().slice(0, 10),
+      place: "",
+      timeStart: "08:00",
+      timeEnd: "20:00",
+      driver: {
+         name: "",
+         uniqNumber: "",
+         licence: "",
+      },
+      car: {
+         name: "",
+         uniqNumber: "",
+         stateNumber: "",
+      },
+   };
+
    const handleClose = () => {
       dispatch(closeModal("visibleModalActionsList"))
-      dispatch(setCurrentList({}))
+      dispatch(setCurrentList(defaultCurrentList))
    };
 
    const handleEdit = () => {
@@ -40,7 +58,7 @@ const ModalDialogList = () => {
    }
 
    const handleDelete = () => {
-      const question = window.confirm(`Вы действительно хотите удалить п/л ${currentList.driverName}?`)
+      const question = window.confirm(`Вы действительно хотите удалить п/л ${currentList.driver.name}?`)
       if (question) {
          dispatch(deleteList(currentList.id))
          const newShift = {
@@ -55,7 +73,7 @@ const ModalDialogList = () => {
          if (!newShift) return
          dispatch(deleteAndRemoveShift(currentShift.id))
          dispatch(postAndAddShift(newShift))
-         dispatch(setCurrentList({}))
+         dispatch(setCurrentList(defaultCurrentList))
          dispatch(closeModal("visibleModalActionsList"))
       } else {
          return

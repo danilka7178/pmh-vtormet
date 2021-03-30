@@ -1,32 +1,35 @@
 import React from 'react';
 import useFormList from '../../hooks/useFormList';
-import FormList from "../forms/FormList"
+import FormList from "../forms/FormList";
+import { useSelector } from "react-redux";
+
 
 const ModalEditList = () => {
+   const currentList = useSelector(state => state.shiftsVault.currentList);
    const {
       visibleModal, sortedWorkersList, sortedTechniquesList,
-      handleClose, handleAdd, valuePlot, handleChangeRadioPlot,
-      dateValue, handleChangeDate, timeStart, handleChangeTimeStart,
-      timeEnd, handleChangeTimeEnd, selectedName, selectedCar,
-      handleChangeSelected, disabledButton
+      handleClose, handleAdd, handleChangeRadioPlot,
+      handleChangeDate, handleChangeTimeStart,
+      handleChangeTimeEnd, handleChangeSelected,
+      disabledButton
    } = useFormList({ isEdit: true });
 
    return (
       <FormList
          visibleModal={visibleModal}
          titleForm={"Редактирование"}
-         valuePlot={valuePlot}
+         valuePlot={currentList.place}
          handleChangeRadioPlot={handleChangeRadioPlot}
-         dateValue={dateValue}
+         dateValue={currentList.date}
          handleChangeDate={handleChangeDate}
-         timeStart={timeStart}
+         timeStart={currentList.timeStart}
          handleChangeTimeStart={handleChangeTimeStart}
-         timeEnd={timeEnd}
+         timeEnd={currentList.timeEnd}
          handleChangeTimeEnd={handleChangeTimeEnd}
-         selectedName={selectedName}
+         selectedName={currentList.driver.name}
          handleChangeSelected={handleChangeSelected}
          sortedWorkersList={sortedWorkersList}
-         selectedCar={selectedCar}
+         selectedCar={currentList.car.name + currentList.car.stateNumber}
          sortedTechniquesList={sortedTechniquesList}
          handleAdd={handleAdd}
          handleClose={handleClose}

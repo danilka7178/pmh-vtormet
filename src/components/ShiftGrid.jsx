@@ -72,7 +72,24 @@ function ShiftGrid() {
    })
 
    const handleClickRow = (data) => {
-      dispatch(setCurrentList(data.row))
+      const newCurrentList = {
+         id: data.row.id,
+         date: data.row.date,
+         place: data.row.place,
+         timeStart: data.row.timeStart,
+         timeEnd: data.row.timeEnd,
+         driver: {
+            name: data.row.driverName,
+            uniqNumber: data.row.driverUniqNumber,
+            licence: data.row.driverLicence,
+         },
+         car: {
+            name: data.row.carName,
+            uniqNumber: data.row.carUniqNumber,
+            stateNumber: data.row.carStateNumber,
+         },
+      }
+      dispatch(setCurrentList(newCurrentList))
       dispatch(openModal("visibleModalActionsList"))
    }
 
