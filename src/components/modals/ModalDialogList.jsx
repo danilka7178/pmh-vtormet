@@ -58,11 +58,14 @@ const ModalDialogList = () => {
    }
 
    const handleDelete = () => {
+      console.log(currentList)
+      console.log(currentShift)
+
       const question = window.confirm(`Вы действительно хотите удалить п/л ${currentList.driver.name}?`)
       if (question) {
          dispatch(deleteList(currentList.id))
          const newShift = {
-            id: currentShift.id - 1,
+            id: +currentShift.id + 1,
             shiftName: currentShift.shiftName,
             shift: currentShift.shift.slice().filter((obj) => {
                return (
@@ -75,9 +78,7 @@ const ModalDialogList = () => {
          dispatch(postAndAddShift(newShift))
          dispatch(setCurrentList(defaultCurrentList))
          dispatch(closeModal("visibleModalActionsList"))
-      } else {
-         return
-      }
+      } else return
    }
    return (
       <div>

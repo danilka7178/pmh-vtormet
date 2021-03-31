@@ -7,7 +7,8 @@ import {
    AddAndPushList, setPlot, setDate,
    setTimeStart, setTimeEnd, setDriverName,
    setDriverUniqNumb, setDriverLicense,
-   setCarName, setCarUniqNumb, setCarStateNumb
+   setCarName, setCarUniqNumb, setCarStateNumb,
+   deleteList
 } from "../store/shifts/actions";
 
 const deaultObj = {
@@ -22,7 +23,8 @@ function useFormList({ isEdit } = deaultObj) {
    const shift = useSelector(state => state.shiftsVault.currentShift.shift);
    const currentShift = useSelector(state => state.shiftsVault.currentShift);
    const workersList = useSelector(state => state.workersListVault.workersList);
-   const techniquesList = useSelector(state => state.techniquesListVault.techniquesList)
+   const techniquesList = useSelector(state => state.techniquesListVault.techniquesList);
+   const shifts = useSelector(state => state.shiftsVault.shiftsList);
 
    React.useEffect(() => {
       dispatch(getWorkersFromServer())
@@ -66,17 +68,17 @@ function useFormList({ isEdit } = deaultObj) {
       dispatch(setCarName(""))
    };
 
-   const handleAdd = () => {
+   const handleAdd = (e) => {
       let newList = {
-         id: +shift.length + 1,
+         id: shift.length !== 0 ? +shift[+shift.length - 1].id + 1 : 1,
          date: currentList ? currentList.date : new Date().toISOString().slice(0, 10),
          place: currentList ? currentList.place : "",
          timeStart: currentList ? currentList.timeStart.replace(":", ".") : "08.00",
          timeEnd: currentList ? currentList.timeEnd.replace(":", ".") : "20.00",
          car: {
-            name: currentList ? currentList.car.name.split(" ")[0] : "",
+            name: currentList ? currentList.car.name : "",
             carUniqNumber: currentList ? currentList.car.uniqNumber : "",
-            stateNumber: currentList ? currentList.car.name.split(" ")[1] : "",
+            stateNumber: currentList ? currentList.car.stateNumber : "",
          },
          driver: {
             name: currentList ? currentList.driver.name : "",
@@ -84,12 +86,18 @@ function useFormList({ isEdit } = deaultObj) {
             driverLicence: currentList ? currentList.driver.licence : "",
          }
       };
+      let findIdShift = shifts.find(obj => obj.shiftName === currentShift.shiftName)
       let newShift = {
-         id: currentShift.id,
+         id: +findIdShift.id + 1,
          shiftName: currentShift.shiftName,
          shift: [...currentShift.shift, newList]
       }
+      if (isEdit) {
+         dispatch(deleteList(currentList.id))
+      }
+      console.log(newList, newShift)
       dispatch(AddAndPushList(newList, newShift))
+
       handleClose("visibleModalAddList")
    }
 

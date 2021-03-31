@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button';
 import ShiftCard from "../components/ShiftCard";
 import { getShifts } from "../store/shifts/actions";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom"
 
 import CircularIndeterminate from "../components/CircularIndeterminate";
 import { openModal } from "../store/modals/actions";
@@ -26,9 +27,9 @@ const ListShifts = ({ handleClickButtonGoBack }) => {
          <h3 className="list-shifts__description">Смены работников ООО "ПМХ-ВТОРМЕТ"</h3>
          <div className="list-shifts__buttons">
             <Button
+               component={Link} to="/"
                variant="contained"
                color="primary"
-               onClick={() => { handleClickButtonGoBack("") }}
             >
                Назад
          </Button>
@@ -45,6 +46,7 @@ const ListShifts = ({ handleClickButtonGoBack }) => {
                <ShiftCard
                   key={obj.id}
                   id={obj.id}
+                  number={+shifts.indexOf(obj) + 1}
                   name={obj.shiftName}
                   amount={obj.shift.length}
                />

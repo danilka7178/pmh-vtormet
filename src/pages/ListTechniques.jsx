@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { DataGrid } from '@material-ui/data-grid';
 
+import Button from '@material-ui/core/Button';
+import { Link } from "react-router-dom"
+
 import ModalTechniquesAdd from "../components/modals/ModalTechniqueAdd";
 import ModalDialogTechniques from "../components/modals/ModalDialogTechniques";
 import { useDispatch, useSelector } from "react-redux";
@@ -25,7 +28,7 @@ const columns = [
    },
 ];
 
-function ListTechniques({ handleClickButtonGoBack, handleOpenModal }) {
+function ListTechniques({ handleOpenModal }) {
    const dispatch = useDispatch();
    const data = useSelector(state => state.techniquesListVault.techniquesList);
 
@@ -43,12 +46,13 @@ function ListTechniques({ handleClickButtonGoBack, handleOpenModal }) {
    return (
       <div className="list-techniques">
          <div className="list-techniques__container">
-            <button
-               className="go-home-page-button"
-               onClick={() => { handleClickButtonGoBack("") }}
+            <Button
+               component={Link} to="/"
+               variant="contained"
+               color="primary"
             >
                Назад
-            </button>
+         </Button>
             <div className="list-workers__description list-techniques__description">Список техники ООО "ПМХ-ВТОРМЕТ"</div>
             <div className="list-workers__side list-techniques__side">
                <button

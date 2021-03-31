@@ -6,28 +6,22 @@ import FormList from "../forms/FormList"
 const ModalAddList = () => {
    const {
       visibleModal, sortedWorkersList, sortedTechniquesList,
-      handleClose, handleAdd, valuePlot, handleChangeRadioPlot,
-      dateValue, handleChangeDate, timeStart, handleChangeTimeStart,
-      timeEnd, handleChangeTimeEnd, selectedName, selectedCar,
-      handleChangeSelected, disabledButton
+      handleClose, handleAdd, handleChangeRadioPlot,
+      handleChangeDate, handleChangeTimeStart,
+      handleChangeTimeEnd, handleChangeSelected,
+      disabledButton
    } = useFormList();
 
    return (
       <FormList
          visibleModal={visibleModal}
          titleForm={"Добавление"}
-         valuePlot={valuePlot}
          handleChangeRadioPlot={handleChangeRadioPlot}
-         dateValue={dateValue}
          handleChangeDate={handleChangeDate}
-         timeStart={timeStart}
          handleChangeTimeStart={handleChangeTimeStart}
-         timeEnd={timeEnd}
          handleChangeTimeEnd={handleChangeTimeEnd}
-         selectedName={selectedName}
          handleChangeSelected={handleChangeSelected}
          sortedWorkersList={sortedWorkersList}
-         selectedCar={selectedCar}
          sortedTechniquesList={sortedTechniquesList}
          handleAdd={handleAdd}
          handleClose={handleClose}

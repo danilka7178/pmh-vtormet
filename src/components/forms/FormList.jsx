@@ -34,8 +34,17 @@ const FormList = ({ visibleModal, titleForm,
    disabledButton, buttonText }) => {
 
    const currentList = useSelector(state => state.shiftsVault.currentList);
-   console.log(currentList)
    const classes = useStyles();
+
+   const transformationTime = (time) => {
+      if (time) {
+         const newTime = time.replace(/\./g, ":").split("");
+         return (
+            newTime.join("")
+         )
+      }
+   }
+
    return (
       <div className="add-list">
          <Dialog
@@ -85,7 +94,7 @@ const FormList = ({ visibleModal, titleForm,
                         inputProps={{
                            step: 600,
                         }}
-                        value={currentList.timeStart}
+                        value={transformationTime(currentList.timeStart)}
                         onChange={handleChangeTimeStart}
                      />
                   </div>
@@ -100,7 +109,7 @@ const FormList = ({ visibleModal, titleForm,
                         inputProps={{
                            step: 600,
                         }}
-                        value={currentList.timeEnd}
+                        value={transformationTime(currentList.timeEnd)}
                         onChange={handleChangeTimeEnd}
                      />
                   </div>

@@ -1,19 +1,18 @@
 import React from "react";
+import { Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import ListWorkers from "./pages/ListWorkers";
 import ListTechniques from "./pages/ListTechniques.jsx";
 import ListShifts from "./pages/ListShifts";
 import ListShift from "./pages/ListShift";
-import PageNotFound from "./pages/PageNotFound";
 
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setCurrentPage } from "./store/pagesList/actions";
 import { openModal } from "./store/modals/actions";
 
 
 function App() {
   const dispatch = useDispatch();
-  const currentPage = useSelector(state => state.pagesListVault.currentPage);
 
   const handleClickButtonGoBack = (page) => {
     if (page) {
@@ -28,22 +27,38 @@ function App() {
 
   return (
     <div className="App">
-      {!currentPage ? <HomePage />
-        : currentPage === "ListWorkers" ? <ListWorkers
+
+      <Route exact path="/">
+        <HomePage />
+      </Route>
+
+      <Route exact path="/workers">
+        <ListWorkers
           handleClickButtonGoBack={handleClickButtonGoBack}
-          handleOpenModal={handleOpenModal} />
-          : currentPage === "ListTechniques" ? <ListTechniques
-            handleClickButtonGoBack={handleClickButtonGoBack}
-            handleOpenModal={handleOpenModal} />
-            : currentPage === "ListShifts" ? <ListShifts
-              handleClickButtonGoBack={handleClickButtonGoBack}
-              handleOpenModal={handleOpenModal}
-            />
-              : currentPage === "ListShift" ? <ListShift
-                handleClickButtonGoBack={handleClickButtonGoBack}
-                handleOpenModal={handleOpenModal}
-              />
-                : <PageNotFound />}
+          handleOpenModal={handleOpenModal}
+        />
+      </Route>
+
+      <Route exact path="/techniques">
+        <ListTechniques
+          handleClickButtonGoBack={handleClickButtonGoBack}
+          handleOpenModal={handleOpenModal}
+        />
+      </Route>
+
+      <Route exact path="/shifts">
+        <ListShifts
+          handleClickButtonGoBack={handleClickButtonGoBack}
+          handleOpenModal={handleOpenModal}
+        />
+      </Route>
+
+      <Route exact path="/current-shift">
+        <ListShift
+          handleOpenModal={handleOpenModal}
+        />
+      </Route>
+
     </div>
   );
 }

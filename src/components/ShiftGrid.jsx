@@ -7,7 +7,7 @@ import ModalDialogList from "../components/modals/ModalDialogList"
 function ShiftGrid() {
    const dispatch = useDispatch();
    const columns = [
-      { field: 'id', headerName: '№ п/п', width: 70 },
+      { field: 'number', headerName: '№ п/п', width: 70 },
       { field: 'date', headerName: 'Дата', width: 150, },
       { field: 'place', headerName: 'Участок', width: 100 },
       { field: 'timeStart', headerName: 'Начало работы', width: 100 },
@@ -42,9 +42,26 @@ function ShiftGrid() {
       }
    }
 
+   const transformationDateAgain = (date) => {
+      if (date) {
+         const someTryMassive = [];
+         const newMassive = date.replace(/\./g, "-").split("");
+
+         someTryMassive.push(newMassive[6], newMassive[7], newMassive[8],
+            newMassive[9], newMassive[5],
+            newMassive[3], newMassive[4], newMassive[2],
+            newMassive[0], newMassive[1])
+
+         return (
+            someTryMassive.join("")
+         )
+      }
+   }
+
    shift.forEach((obj) => {
       const newObject = {
          id: obj.id,
+         number: +shift.indexOf(obj) + 1,
          date: transformationDate(obj.date),
          place: obj.place,
          timeStart: obj.timeStart,
@@ -74,7 +91,7 @@ function ShiftGrid() {
    const handleClickRow = (data) => {
       const newCurrentList = {
          id: data.row.id,
-         date: data.row.date,
+         date: transformationDateAgain(data.row.date),
          place: data.row.place,
          timeStart: data.row.timeStart,
          timeEnd: data.row.timeEnd,

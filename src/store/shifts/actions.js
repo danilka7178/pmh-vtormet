@@ -59,7 +59,7 @@ export const removeShift = (id) => ({
 })
 
 export const AddAndPushList = (data, newShift) => async (dispatch) => {
-   await dispatch(deleteAndRemoveShift(newShift.id))
+   await dispatch(deleteAndRemoveShift(+newShift.id - 1))
    await dispatch(addList(data))
    dispatch(postAndAddShift(newShift))
 }

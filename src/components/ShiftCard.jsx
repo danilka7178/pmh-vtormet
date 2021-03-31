@@ -5,9 +5,9 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { Link } from "react-router-dom"
 
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrentPage } from "../store/pagesList/actions";
 import { setCurrentShift, deleteAndRemoveShift } from "../store/shifts/actions";
 
 const useStyles = makeStyles({
@@ -24,7 +24,7 @@ const useStyles = makeStyles({
    },
 });
 
-function ShiftCard({ id, name, amount }) {
+function ShiftCard({ id, number, name, amount }) {
    const classes = useStyles();
    const dispatch = useDispatch();
    const shifts = useSelector(state => state.shiftsVault.shiftsList)
@@ -44,14 +44,13 @@ function ShiftCard({ id, name, amount }) {
       }
    }
 
-   const handleOpen = async (page, e) => {
+   const handleOpen = async (e) => {
       const currentShift = await shifts.find((obj) => {
          return (
             +obj.id === +e.currentTarget.id
          )
       })
       dispatch(setCurrentShift(currentShift))
-      dispatch(setCurrentPage(page))
    }
 
    return (
@@ -59,7 +58,7 @@ function ShiftCard({ id, name, amount }) {
          <Card className={classes.root} variant="outlined">
             <CardContent>
                <Typography className={classes.title} color="textSecondary">
-                  Смена №{id}
+                  Смена №{number}
                </Typography>
                <Typography variant="h5" component="h2">
                   {name}
@@ -79,11 +78,12 @@ function ShiftCard({ id, name, amount }) {
                   Удалить
                   </Button>
                <Button
+                  component={Link} to="/current-shift"
                   id={id}
                   size="small"
                   variant="contained"
                   color="secondary"
-                  onClick={(e) => { handleOpen("ListShift", e) }}
+                  onClick={(e) => { handleOpen(e) }}
                >
                   Открыть
                   </Button>

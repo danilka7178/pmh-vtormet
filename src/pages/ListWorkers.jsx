@@ -2,12 +2,15 @@ import React from 'react';
 import WorkersTable from "../components/WorkersTable";
 import axios from "axios";
 
+import Button from '@material-ui/core/Button';
+import { Link } from "react-router-dom"
+
 import { useSelector, useDispatch } from "react-redux";
 import { setData } from "../store/workersList/actions";
 
 import ModalAddWorker from "../components/modals/ModalAddWorker";
 
-function ListWorkers({ handleClickButtonGoBack, handleOpenModal }) {
+function ListWorkers({ handleOpenModal }) {
 
    const data = useSelector(state => state.workersListVault.workersList);
    const [inputSearchWorkerValue, setInputSearchWorkerValue] = React.useState("");
@@ -77,12 +80,14 @@ function ListWorkers({ handleClickButtonGoBack, handleOpenModal }) {
    return (
       <div className="container">
          <div className="list-workers">
-            <button
-               className="go-home-page-button"
-               onClick={() => { handleClickButtonGoBack("") }}
+            <Button
+               style={{ position: "absolute", left: "0", top: "0" }}
+               component={Link} to="/"
+               variant="contained"
+               color="primary"
             >
                Назад
-            </button>
+         </Button>
             <div className="list-workers__description">Список сотрудников ООО "ПМХ-ВТОРМЕТ"</div>
             <div className="list-workers__side">
                <button
