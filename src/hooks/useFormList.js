@@ -10,6 +10,7 @@ import {
    setCarName, setCarUniqNumb, setCarStateNumb,
    deleteList
 } from "../store/shifts/actions";
+import { v4 as uuidv4 } from 'uuid';
 
 const deaultObj = {
    isEdit: false,
@@ -20,7 +21,6 @@ function useFormList({ isEdit } = deaultObj) {
    const currentList = useSelector(state => state.shiftsVault.currentList);
    const visibleModalAddList = useSelector(state => state.modalsVault.visibleModals.visibleModalAddList);
    const visibleModalEditList = useSelector(state => state.modalsVault.visibleModals.visibleModalEditList);
-   const shift = useSelector(state => state.shiftsVault.currentShift.shift);
    const currentShift = useSelector(state => state.shiftsVault.currentShift);
    const workersList = useSelector(state => state.workersListVault.workersList);
    const techniquesList = useSelector(state => state.techniquesListVault.techniquesList);
@@ -69,8 +69,8 @@ function useFormList({ isEdit } = deaultObj) {
    };
 
    const handleAdd = (e) => {
-      let newList = {
-         id: shift.length !== 0 ? +shift[+shift.length - 1].id + 1 : 1,
+      const newList = {
+         id: uuidv4().slice(0, 8),
          date: currentList ? currentList.date : new Date().toISOString().slice(0, 10),
          place: currentList ? currentList.place : "",
          timeStart: currentList ? currentList.timeStart.replace(":", ".") : "08.00",
@@ -86,17 +86,26 @@ function useFormList({ isEdit } = deaultObj) {
             driverLicence: currentList ? currentList.driver.licence : "",
          }
       };
-      let findIdShift = shifts.find(obj => obj.shiftName === currentShift.shiftName)
-      let newShift = {
-         id: +findIdShift.id + 1,
+
+      const newShift = {
+         id: uuidv4().slice(0, 8),
          shiftName: currentShift.shiftName,
          shift: [...currentShift.shift, newList]
       }
+
+      const findIdShift = shifts.find(obj => obj.shiftName === currentShift.shiftName).id;
       if (isEdit) {
+         console.log(findIdShift)
+         console.log(newList)
+         console.log(newShift)
          dispatch(deleteList(currentList.id))
+         dispatch(AddAndPushList(findIdShift, newList, newShift))
+      } else {
+         console.log(findIdShift)
+         console.log(newList)
+         console.log(newShift)
+         dispatch(AddAndPushList(findIdShift, newList, newShift))
       }
-      console.log(newList, newShift)
-      dispatch(AddAndPushList(newList, newShift))
 
       handleClose("visibleModalAddList")
    }

@@ -10,6 +10,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import { useSelector, useDispatch } from "react-redux";
 import { closeModal } from "../../store/modals/actions";
 import { postAndAddShift } from "../../store/shifts/actions";
+import { v4 as uuidv4 } from 'uuid';
 
 function ModalAddShift() {
    const [inputValue, setInputValue] = React.useState("");
@@ -33,10 +34,11 @@ function ModalAddShift() {
 
    const handleAdd = () => {
       const newShift = {
-         id: shifts.length ? +shifts[shifts.length - 1].id + 1 : 1,
+         id: uuidv4().slice(0, 8),
          shiftName: inputValue,
          shift: []
       }
+      console.log(newShift)
       dispatch(postAndAddShift(newShift))
       dispatch(closeModal("visibleModalAddShift"))
       setInputValue("")

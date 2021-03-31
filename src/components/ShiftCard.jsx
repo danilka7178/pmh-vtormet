@@ -47,7 +47,7 @@ function ShiftCard({ id, number, name, amount }) {
    const handleOpen = async (e) => {
       const currentShift = await shifts.find((obj) => {
          return (
-            +obj.id === +e.currentTarget.id
+            obj.id === e.currentTarget.id
          )
       })
       dispatch(setCurrentShift(currentShift))

@@ -58,9 +58,9 @@ export const removeShift = (id) => ({
    payload: id
 })
 
-export const AddAndPushList = (data, newShift) => async (dispatch) => {
-   await dispatch(deleteAndRemoveShift(+newShift.id - 1))
-   await dispatch(addList(data))
+export const AddAndPushList = (findIdShift, newList, newShift) => async (dispatch) => {
+   await dispatch(deleteAndRemoveShift(findIdShift))
+   await dispatch(addList(newList))
    dispatch(postAndAddShift(newShift))
 }
 

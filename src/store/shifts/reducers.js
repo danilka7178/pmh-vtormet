@@ -48,7 +48,7 @@ export const shiftsReducer = produce((draftState, action) => {
    } else if (action.type === SET_CURRENT_LIST) {
       draftState.currentList = action.payload
    } else if (action.type === DELETE_LIST) {
-      draftState.currentShift.shift = draftState.currentShift.shift.filter(obj => +obj.id !== +action.payload)
+      draftState.currentShift.shift = draftState.currentShift.shift.filter(obj => obj.id !== action.payload)
    } else if (action.type === SET_PLOT) {
       draftState.currentList.place = action.payload
    } else if (action.type === SET_DATE) {
