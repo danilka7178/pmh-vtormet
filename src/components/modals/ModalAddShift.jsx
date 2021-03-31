@@ -38,7 +38,6 @@ function ModalAddShift() {
          shiftName: inputValue,
          shift: []
       }
-      console.log(newShift)
       dispatch(postAndAddShift(newShift))
       dispatch(closeModal("visibleModalAddShift"))
       setInputValue("")
