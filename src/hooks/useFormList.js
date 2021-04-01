@@ -93,13 +93,13 @@ function useFormList({ isEdit } = deaultObj) {
          shift: [...currentShift.shift, newList]
       }
 
-      const findIdShift = shifts.find(obj => obj.shiftName === currentShift.shiftName).id;
+      const findIdShift = shifts.find(obj => obj.shiftName === currentShift.shiftName);
       if (isEdit) {
-         console.log(findIdShift)
+         console.log(findIdShift.id)
          console.log(newList)
          console.log(newShift)
          dispatch(deleteList(currentList.id))
-         dispatch(AddAndPushList(findIdShift, newList, newShift))
+         dispatch(AddAndPushList(findIdShift.id, newList, newShift))
       } else {
          console.log(findIdShift)
          console.log(newList)
